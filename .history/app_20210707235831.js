@@ -19,7 +19,7 @@ var exportData      = require("./routes/exportExcelData");
 
 try {
     // mongoose.connect('mongodb://localhost/gamergram', { useNewUrlParser: true, useUnifiedTopology: true});
-    mongoose.connect("mongodb+srv://johnhardenberg:Lehecejo6!@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
+    mongoose.connect("mongodb+srv://johnhardenberg:<password>@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true });
 } catch (error) {
     handleError(error);
 }
