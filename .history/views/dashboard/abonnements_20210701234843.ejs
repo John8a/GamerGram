@@ -1,0 +1,9 @@
+<table>
+    <% emails.forEach(function(email) { %>
+    <tr>
+        <td><%- email.date.getFullYear() %></td>
+        <td><%- email.email %></td>
+        <td><button>X</button></td>    
+    </tr>
+    <% }); %>
+</table>

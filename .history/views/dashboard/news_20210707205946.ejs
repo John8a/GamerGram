@@ -1,0 +1,55 @@
+<%- include('header') %>
+    <section name="contacts">
+        <div class="head">
+            <h1>Kontaktanfragen
+                <div class="right">
+                    <p><%- contacts.length %></p>
+                    <a href="/news/new" class="download">
+                        <img src="/images/Add.svg" alt="">
+                    </a>
+                </div>
+            </h1>
+            <h4>Alle News auf einen Blick</h4>
+        </div>
+
+
+        <div class="container">
+            <div class="inner-container">
+                <div class="left fade-out">
+    
+                </div>
+                <div class="right fade-out">
+    
+                </div>
+
+                <div class="cards">
+                    <% news.forEach(function(article) { %>
+                    <form class="card" action="/dashboard/news" method="POST">
+                        <div class="card-top">
+                            <div class="information">
+                                <input type="text" value="<%- article.title %>">
+                            </div>
+                            <div class="information">
+                                <input type="text" value="<%- article.image %>">
+                            </div>
+                            <div class="information">
+                                <select name="theme" id="">
+                                    <option value="dark">Dark</option>
+                                    <option value="light">Light</option>
+                                </select>
+                            </div>
+                            <div class="information">
+                                <textarea name="" id="" cols="30" rows="10">
+                                    <%- article.text %>
+                                </textarea>
+                            </div>
+                        </div>
+                    </form>
+                    <% }); %>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="/scripts/contact.js"></script>
+</html>

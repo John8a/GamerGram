@@ -1,0 +1,75 @@
+<%- include('header') %>
+    <section name="news">
+        <div class="head">
+            <h1>Kontaktanfragen
+                <div class="right">
+                    <p><%- news.length %></p>
+                    <a href="/news/new" class="download">
+                        <img src="/images/Add.svg" alt="">
+                    </a>
+                </div>
+            </h1>
+            <h4>Alle News auf einen Blick</h4>
+        </div>
+
+
+        <div class="container">
+            <div class="inner-container">
+                <div class="left fade-out">
+    
+                </div>
+                <div class="right fade-out">
+    
+                </div>
+
+                <div class="cards">
+                    <% news.forEach(function(article) { %>
+                    <form class="card" action="/dashboard/news/<%- article._id %>?_method=PUT" method="POST">
+                        <div class="information">
+                            <input type="text" name="title" value="<%- article.title %>" placeholder="Titel">
+                        </div>
+                        <div class="information">
+                            <input type="text" name="image" value="<%- article.image %>" placeholder="Bild">
+                        </div>
+                        <div class="information">
+                            <select name="theme" id="">
+                                <option value="dark">Dark</option>
+                                <% if(article.theme === "light") { %>
+                                    <option value="light" selected>Light</option>
+                                <% } else { %>
+                                    <option value="light" >Light</option>
+                                <% } %>
+                            </select>
+                        </div>
+                        <div class="information">
+                            <textarea name="text" id="" cols="30" rows="10" placeholder="Text"><%- article.text %></textarea>
+                        </div>
+                        <button>Update</button>
+                    </form>
+                    <% }); %>
+                    <form class="card" action="/dashboard/news" method="POST">
+                        <div class="information">
+                            <input type="text" name="title" value="" placeholder="Titel">
+                        </div>
+                        <div class="information">
+                            <input type="text" name="image" value="" placeholder="Bild">
+                        </div>
+                        <div class="information">
+                            <select name="theme" id="">
+                                <option value="dark">Dark</option>
+                                <option value="light">Light</option>
+                            </select>
+                        </div>
+                        <div class="information" placeholder="Nachricht">
+                            <textarea name="message" id="" cols="30" rows="10">
+                            </textarea>
+                        </div>
+                        <button>Absenden</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+<script src="/scripts/contact.js"></script>
+</html>

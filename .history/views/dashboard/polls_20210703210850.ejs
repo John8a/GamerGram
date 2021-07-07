@@ -1,0 +1,36 @@
+<%- include('./partials/header') %>
+    <section name="abonements">
+        <div class="head">
+            <h1>Polls
+                <div class="right">
+                    <p><%- polls.length %></p>
+                    <a href="/outputs/polls.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </h1>
+            <h4>Wir haben die Abstimmungen gezählt</h4>
+        </div>
+        <table>
+            <tr class="header">
+                <th>Datum</th>
+                <th>Nachricht</th>
+                <th>Ja/Nein</th>
+                <th>Entfernen</th>
+            </tr>
+            <% polls.forEach(function(poll) { %>
+            <tr>
+                <td><%- poll.date.getDate() %>.<%- poll.date.getMonth()+1 %>.<%- poll.date.getFullYear() %></td>
+                <td><%- poll.message %></td>
+                <td><%- poll.poll %></td>
+                <td>
+                    <form action="/poll/<%= poll._id %>?_method=DELETE" method="POST">
+                        <button>X</button>
+                    </form>
+                </td>    
+            </tr>
+            <% }); %>
+        </table>
+    </section>
+</body>
+</html>

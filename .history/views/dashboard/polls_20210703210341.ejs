@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Polls</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">Gamergram</a>
+        </div>
+        <div class="nav-links">
+            <a href="" class="user"><img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt=""></a>
+        </div>
+    </header>
+    <section name="abonements">
+        <div class="head">
+            <h1>Polls
+                <div class="right">
+                    <p><%- polls.length %></p>
+                    <a href="/outputs/polls.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </h1>
+            <h4>Wir haben die Abstimmungen gezählt</h4>
+        </div>
+        <table>
+            <tr class="header">
+                <th>Datum</th>
+                <th>Ja/Nein</th>
+                <th>Nachricht</th>
+                <th>Entfernen</th>
+            </tr>
+            <% polls.forEach(function(poll) { %>
+            <tr>
+                <td><%- poll.date.getDate() %>.<%- poll.date.getMonth()+1 %>.<%- poll.date.getFullYear() %></td>
+                <td><%- poll.poll %></td>
+                <td><%- poll.message %></td>
+                <td>
+                    <form action="/abo/<%= email._id %>?_method=DELETE" method="POST">
+                        <button>X</button>
+                    </form>
+                </td>    
+            </tr>
+            <% }); %>
+        </table>
+    </section>
+</body>
+</html>

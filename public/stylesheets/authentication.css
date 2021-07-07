@@ -1,0 +1,98 @@
+:root {
+  font-family: Montserrat;
+  --primary-background: linear-gradient(90deg, #B474E7 0%, #EF4AB7 100%);
+  --grey-background: #F5F5F5;
+  --white-: #fff;
+  --black-: #000;
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body {
+  background: var(--primary-background);
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+body form {
+  width: 400px;
+  background-color: #fff;
+  border-radius: 10px;
+  padding: 30px 20px;
+}
+
+body form .head h1 {
+  text-align: center;
+}
+
+body form .head h4 {
+  text-align: center;
+  font-weight: 200;
+  font-size: 15px;
+}
+
+body form .input-field {
+  margin: 10px 0;
+}
+
+body form .input-field input {
+  border: 0;
+  background-color: #f5f5f5;
+  font-size: 18px;
+  font-family: 'Montserrat';
+  font-weight: 300;
+  outline: none;
+  padding: 10px 10px;
+  width: 100%;
+  border-radius: 10px;
+}
+
+body form .input-field input:focus {
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 4px rgba(0, 0, 0, 0.1);
+}
+
+body form button {
+  width: 100%;
+  font-size: 20px;
+  font-family: 'Montserrat';
+  font-weight: 600;
+  border: 0;
+  outline: none;
+  background-color: #444444;
+  color: #fff;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  border-radius: 5px;
+  cursor: pointer;
+  position: relative;
+}
+
+body form button i {
+  position: absolute;
+  right: 10px;
+}
+/*# sourceMappingURL=authentication.css.map */

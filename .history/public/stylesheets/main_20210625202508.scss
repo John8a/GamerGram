@@ -1,0 +1,49 @@
+:root {
+    font-family: Montserrat;
+    --primary-background: linear-gradient(90deg, #B474E7 0%, #EF4AB7 100%);
+    --grey-background: #F5F5F5;
+    --white-: #fff;
+    --black-: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+header {
+
+    display: flex;
+
+    .logo {
+        a {
+            font-family: 'Roboto';
+            color: var(--black-);
+            font-size: 35px;
+            font-weight: 800;
+        }
+    }
+
+    .nav-links {
+        a {
+            color: var(--white-);
+            display: block;
+            text-decoration: none;
+
+            &.contact-btn {
+                color: var(--white-);
+                background-color: rgba($color: var(--white-), $alpha: 0.3);
+                border: 1px solid var(--white-);
+            }
+        }
+    }
+}

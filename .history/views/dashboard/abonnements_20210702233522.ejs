@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Abos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="">Gamergram</a>
+        </div>
+        <div class="nav-links">
+            <a href="/abonements.xlsx" download="Abonennten.xlsx" class="download"><img src="/images/Download.svg" alt=""></a>
+            <a href="" class="user"><img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt=""></a>
+        </div>
+    </header>
+
+    <section name="abonements">
+        <table>
+            <tr class="header">
+                <th>Datum</th>
+                <th>E-Mail-Adresse</th>
+                <th>Entfernen</th>
+            </tr>
+            <% emails.forEach(function(email) { %>
+            <tr>
+                <td><%- email.date.getDate() %>.<%- email.date.getMonth()+1 %>.<%-email.date.getFullYear() %></td>
+                <td><%- email.email %></td>
+                <td>
+                    <form action="/abo/<%= email._id %>?_method=DELETE" method="POST">
+                        <button>X</button>
+                    </form>
+                </td>    
+            </tr>
+            <% }); %>
+        </table>
+    </section>
+
+</body>
+<footer>
+
+</footer>

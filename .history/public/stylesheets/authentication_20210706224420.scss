@@ -1,0 +1,22 @@
+:root {
+    font-family: Montserrat;
+    --primary-background: linear-gradient(90deg, #B474E7 0%, #EF4AB7 100%);
+    --grey-background: #F5F5F5;
+    --white-: #fff;
+    --black-: #000;
+    scroll-behavior: smooth;
+}
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    background: var(--primary-background);
+}
+
+form {
+
+}

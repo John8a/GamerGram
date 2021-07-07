@@ -1,0 +1,39 @@
+:root {
+    font-family: Montserrat;
+    --primary-background: linear-gradient(90deg, #B474E7 0%, #EF4AB7 100%);
+    --grey-background: #F5F5F5;
+    --white-: #fff;
+    --black-: #000;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+header {
+    height: 100px;
+    background-color: #1b1b1b;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+
+    a {
+        margin: 0 10px;
+        &.download {
+            img {
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        &.user {
+            img {
+                width: 75px;
+                height: 75px;
+                border-radius: 37.5px;
+            }
+        }
+    }
+}

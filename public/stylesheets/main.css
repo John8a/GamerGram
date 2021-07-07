@@ -1,0 +1,1062 @@
+:root {
+  font-family: Montserrat;
+  --primary-background: linear-gradient(90deg, #B474E7 0%, #EF4AB7 100%);
+  --grey-background: #F5F5F5;
+  --white-: #fff;
+  --black-: #000;
+  scroll-behavior: smooth;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+h1 {
+  font-size: 36px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: 16px;
+  font-weight: 400;
+}
+
+input, textarea {
+  font-family: 'Montserrat';
+}
+
+.show {
+  display: block !important;
+}
+
+.mobile-navbar {
+  display: none;
+}
+
+body {
+  background-color: var(--grey-background);
+}
+
+.flash-message {
+  margin-top: 10px;
+  color: #3dd400;
+}
+
+.flash-message.hide {
+  display: none;
+}
+
+.flash-message p {
+  padding: 5px;
+  font-size: 14px !important;
+}
+
+header {
+  z-index: 1000;
+  position: fixed;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  padding: 20px 50px;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: baseline;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+}
+
+header .logo a {
+  font-family: 'Roboto';
+  color: var(--black-);
+  font-size: 35px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+header.scroll {
+  background-color: rgba(0, 0, 0, 0.3);
+  -webkit-backdrop-filter: blur(2px);
+          backdrop-filter: blur(2px);
+  -webkit-transition: 0.1s linear;
+  transition: 0.1s linear;
+}
+
+header.scroll .logo a {
+  color: var(--white-);
+}
+
+header .nav-links {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+header .nav-links a {
+  color: var(--white-);
+  display: block;
+  text-decoration: none;
+  margin: 0 20px;
+}
+
+header .nav-links a.contact-btn {
+  color: var(--white-);
+  background-color: rgba(255, 255, 255, 0.3);
+  border: 1px solid var(--white-);
+  border-radius: 25px;
+  padding: 10px 15px;
+}
+
+section .head {
+  padding-top: 20px;
+}
+
+section .head h1 {
+  text-align: center;
+}
+
+section .head h4 {
+  text-align: center;
+}
+
+section.small {
+  height: 50vh;
+}
+
+section[name="hero"] {
+  width: 100%;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  top: 0;
+  background-image: url("/images/background-hero.png");
+  background-repeat: no-repeat;
+  background-size: 70%;
+  background-position-x: right;
+}
+
+section[name="hero"] .left {
+  width: 60%;
+  height: 100vh;
+}
+
+section[name="hero"] .left .container {
+  height: 100%;
+  width: 50%;
+  margin: 0 auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section[name="hero"] .left .container h1 {
+  font-size: 45px;
+}
+
+section[name="hero"] .left .container h1 span {
+  background-image: var(--primary-background);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+}
+
+section[name="hero"] .left .container p {
+  margin: 20px 0;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+section[name="hero"] .left .container p.text-grey {
+  color: #4b4b4b;
+  font-weight: 300;
+}
+
+section[name="hero"] .left .container .poll .poll-panel {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+section[name="hero"] .left .container .poll .poll-panel a {
+  border: 0;
+  margin: 0 10px;
+  background: var(--primary-background);
+  background-color: rgba(255, 255, 255, 0.25);
+  background-blend-mode: lighten;
+  width: 70px;
+  height: 40px;
+  font-size: 20px;
+  font-weight: 200;
+  color: #fff;
+  border-radius: 20px;
+  text-align: center;
+  position: relative;
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section[name="hero"] .left .container .poll .poll-panel a input[type="radio"] {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+section[name="hero"] .left .container .poll .input-field {
+  margin-top: 15px;
+}
+
+section[name="hero"] .left .container .poll .input-field.hide {
+  display: none;
+}
+
+section[name="hero"] .left .container .poll .input-field label {
+  font-size: 12px;
+}
+
+section[name="hero"] .left .container .poll .input-field textarea {
+  border: 0;
+  background-color: var(--white-);
+  border-radius: 15px 15px 0 0;
+  width: 80%;
+  outline: none;
+  padding: 10px;
+}
+
+section[name="hero"] .left .container .poll .input-field button {
+  background: var(--primary-background);
+  border: 0;
+  padding: 10px;
+  color: var(--white-);
+  width: 80%;
+  border-radius: 0 0 15px 15px;
+}
+
+section[name="hero"] .right {
+  margin-top: 5%;
+  width: 40%;
+  height: 100vh;
+}
+
+section[name="features"] .cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+section[name="features"] .cards .card {
+  margin: 60px 25px;
+  height: 300px;
+  -ms-flex-preferred-size: 300px;
+      flex-basis: 300px;
+}
+
+section[name="features"] .cards .card .card-top {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 20px;
+}
+
+section[name="features"] .cards .card .card-top h3 {
+  margin-left: 10px;
+  font-size: 16px;
+}
+
+section[name="features"] .cards .card .card-description {
+  padding: 25px 50px;
+}
+
+section[name="enroll"] {
+  background: var(--primary-background);
+  height: auto;
+}
+
+section[name="enroll"] .head {
+  color: var(--white-);
+}
+
+section[name="enroll"] div {
+  margin: 80px 0 0 0;
+}
+
+section[name="enroll"] div form {
+  width: 600px;
+  margin: 0 auto;
+}
+
+section[name="enroll"] div form input {
+  padding: 12px 25px;
+  width: 65%;
+  border-radius: 35px;
+  font-size: 18px;
+  border: 2px solid var(--white-);
+  background-color: rgba(255, 255, 255, 0.3);
+  outline: none;
+  color: var(--white-);
+  font-weight: 200;
+}
+
+section[name="enroll"] div form input::-webkit-input-placeholder {
+  color: var(--white-);
+  font-weight: 200;
+}
+
+section[name="enroll"] div form input:-ms-input-placeholder {
+  color: var(--white-);
+  font-weight: 200;
+}
+
+section[name="enroll"] div form input::-ms-input-placeholder {
+  color: var(--white-);
+  font-weight: 200;
+}
+
+section[name="enroll"] div form input::placeholder {
+  color: var(--white-);
+  font-weight: 200;
+}
+
+section[name="enroll"] div form button {
+  padding: 15px 25px;
+  width: 25%;
+  background-color: #4b4b4b;
+  color: var(--white-);
+  border-radius: 40px;
+  font-size: 18px;
+  border: 2px solid #4b4b4b;
+  float: right;
+}
+
+section[name="enroll"] div form p {
+  color: #4b4b4b;
+  font-weight: 200;
+  font-size: 14px;
+  padding: 10px 0 20px;
+}
+
+section[name="news"] {
+  height: auto;
+}
+
+section[name="news"] .cards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+  margin: 20px 100px 30px;
+}
+
+section[name="news"] .cards .card {
+  height: 350px;
+  margin: 20px;
+  border-radius: 20px;
+  width: 300px;
+  position: relative;
+  -webkit-box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2);
+          box-shadow: 5px 0px 10px rgba(0, 0, 0, 0.2);
+}
+
+section[name="news"] .cards .card img {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 20px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+section[name="news"] .cards .card.light .card-description {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+section[name="news"] .cards .card.light .card-description h2 {
+  color: black;
+}
+
+section[name="news"] .cards .card.light .card-description p {
+  color: black;
+}
+
+section[name="news"] .cards .card.dark .card-description {
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+section[name="news"] .cards .card.dark .card-description h2 {
+  color: white;
+}
+
+section[name="news"] .cards .card.dark .card-description p {
+  color: white;
+}
+
+section[name="news"] .cards .card .card-description {
+  -webkit-backdrop-filter: blur(10px);
+          backdrop-filter: blur(10px);
+  position: absolute;
+  bottom: 0;
+  border-radius: 20px;
+  padding: 20px 20px;
+  width: 100%;
+}
+
+section[name="news"] .cards .card .card-description.full {
+  display: none;
+  overflow-y: scroll;
+  height: 350px;
+}
+
+section[name="news"] .cards .card .card-description.full::-webkit-scrollbar {
+  display: none;
+}
+
+section[name="news"] .cards .card .card-description.full h2 {
+  margin-bottom: 15px;
+}
+
+section[name="news"] .cards .card .card-description h2 {
+  font-size: 20px;
+}
+
+section[name="news"] .cards .card .card-description a {
+  background-image: var(--primary-background);
+  background-size: 100%;
+  background-repeat: repeat;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -moz-background-clip: text;
+  -moz-text-fill-color: transparent;
+  display: block;
+  margin-top: 10px;
+}
+
+section[name="contact"] {
+  padding: 50px 10%;
+  background-color: #1b1b1b;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+section[name="contact"] .left {
+  width: 50%;
+}
+
+section[name="contact"] .left h1, section[name="contact"] .left h4 {
+  color: var(--white-);
+}
+
+section[name="contact"] .left h4 {
+  margin: 40px 100px 40px 0;
+}
+
+section[name="contact"] .left .social-media {
+  position: relative;
+  padding: 2px;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  border: 2px solid transparent;
+  border-radius: 10px;
+  width: 220px;
+}
+
+section[name="contact"] .left .social-media:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#B474E790), to(#EF4AB790));
+  background: linear-gradient(90deg, #B474E790 0%, #EF4AB790 100%);
+  background-clip: padding-box;
+}
+
+section[name="contact"] .left .social-media:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  margin: -2px;
+  border-radius: inherit;
+  background-color: #1b1b1b;
+}
+
+section[name="contact"] .left .social-media a.information {
+  text-decoration: none;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+section[name="contact"] .left .social-media a.information:hover {
+  background-color: #1b1b1b;
+  background-image: -webkit-gradient(linear, left top, right top, from(#b374e760), to(#EF4AB760));
+  background-image: linear-gradient(90deg, #b374e760 0%, #EF4AB760 100%);
+}
+
+section[name="contact"] .left .social-media p {
+  color: var(--white-);
+}
+
+section[name="contact"] .left .social-media i {
+  margin: 0 5px;
+  margin-right: 10px;
+  color: var(--white-);
+  font-size: 22px;
+}
+
+section[name="contact"] .right {
+  margin-left: 3%;
+  width: 47%;
+}
+
+section[name="contact"] .right form {
+  width: 100%;
+  padding: 20px;
+  background-color: var(--white-);
+  border-radius: 15px;
+}
+
+section[name="contact"] .right form .input-field {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 10px 0;
+}
+
+section[name="contact"] .right form .input-field label {
+  font-weight: 600;
+}
+
+section[name="contact"] .right form .input-field textarea {
+  margin-top: 5px;
+  border-radius: 10px;
+  background-color: var(--grey-background);
+  border: 0;
+  outline: none;
+  padding: 10px;
+  font-size: 18px;
+  height: 150px;
+}
+
+section[name="contact"] .right form .input-field .input {
+  margin-top: 5px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: reverse;
+      -ms-flex-direction: row-reverse;
+          flex-direction: row-reverse;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: relative;
+  background-image: var(--primary-background);
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  border-radius: 10px;
+}
+
+section[name="contact"] .right form .input-field .input.active {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+}
+
+section[name="contact"] .right form .input-field .input.active img {
+  -webkit-filter: grayscale(0%);
+          filter: grayscale(0%);
+}
+
+section[name="contact"] .right form .input-field .input img {
+  position: absolute;
+  left: 0;
+  margin: 10px;
+  width: 25px;
+  -o-object-fit: contain;
+     object-fit: contain;
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+}
+
+section[name="contact"] .right form .input-field .input input {
+  width: 100%;
+  border: 0;
+  border-radius: 8px;
+  font-size: 18px;
+  margin: 2px;
+  padding: 10px 20px;
+  padding-left: 50px;
+  outline: none;
+}
+
+section[name="contact"] .right form button {
+  background: var(--primary-background);
+  border: 0;
+  color: var(--white-);
+  font-size: 16px;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+footer {
+  padding: 0 50px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 60px;
+}
+
+footer .privacy-policies {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+footer .privacy-policies a {
+  margin-right: 10px;
+  color: #000;
+}
+
+footer .copy p {
+  font-weight: 600;
+}
+
+.mouse {
+  background: #777 -webkit-gradient(linear, left top, left bottom, from(transparent), color-stop(50%, transparent), color-stop(50%, #ffffff), to(#ffffff));
+  background: #777 linear-gradient(transparent 0%, transparent 50%, #ffffff 50%, #ffffff 100%);
+  position: absolute;
+  bottom: 44px;
+  left: 50%;
+  width: 26px;
+  height: 44px;
+  border-radius: 100px;
+  background-size: 100% 200%;
+  -webkit-animation: colorSlide 5s linear infinite, nudgeMouse 5s ease-out infinite;
+  animation: colorSlide 5s linear infinite, nudgeMouse 5s ease-out infinite;
+}
+
+.mouse:before, .mouse:after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  margin: auto;
+}
+
+.mouse:before {
+  width: 22px;
+  height: 40px;
+  background: var(--primary-background);
+  border-radius: 100px;
+}
+
+.mouse:after {
+  background-color: #777;
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  -webkit-animation: trackBallSlide 5s linear infinite;
+  animation: trackBallSlide 5s linear infinite;
+}
+
+.remove-top {
+  margin-top: -100px;
+  opacity: 0;
+  -webkit-transition: 0.05s linear;
+  transition: 0.05s linear;
+}
+
+.fade-in {
+  margin-top: 0;
+  opacity: 1;
+  -webkit-transition: 0.05s linear;
+  transition: 0.05s linear;
+}
+
+@-webkit-keyframes colorSlide {
+  0% {
+    background-position: 0% 100%;
+  }
+  20% {
+    background-position: 0% 0%;
+  }
+  21% {
+    background-color: #777777;
+  }
+  29.99% {
+    background-color: #ffffff;
+    background-position: 0% 0%;
+  }
+  30% {
+    background-color: #777;
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 0% 0%;
+  }
+  51% {
+    background-color: #777;
+  }
+  59% {
+    background-color: #ffffff;
+    background-position: 0% 0%;
+  }
+  60% {
+    background-color: #777;
+    background-position: 0% 100%;
+  }
+  80% {
+    background-position: 0% 0%;
+  }
+  81% {
+    background-color: #777;
+  }
+  90%, 100% {
+    background-color: #ffffff;
+  }
+}
+
+@keyframes colorSlide {
+  0% {
+    background-position: 0% 100%;
+  }
+  20% {
+    background-position: 0% 0%;
+  }
+  21% {
+    background-color: #777;
+  }
+  29.99% {
+    background-color: #ffffff;
+    background-position: 0% 0%;
+  }
+  30% {
+    background-color: #777;
+    background-position: 0% 100%;
+  }
+  50% {
+    background-position: 0% 0%;
+  }
+  51% {
+    background-color: #777;
+  }
+  59% {
+    background-color: #ffffff;
+    background-position: 0% 0%;
+  }
+  60% {
+    background-color: #777;
+    background-position: 0% 100%;
+  }
+  80% {
+    background-position: 0% 0%;
+  }
+  81% {
+    background-color: #777;
+  }
+  90%, 100% {
+    background-color: #ffffff;
+  }
+}
+
+@-webkit-keyframes trackBallSlide {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  6% {
+    opacity: 1;
+    -webkit-transform: scale(0.9) translateY(5px);
+            transform: scale(0.9) translateY(5px);
+  }
+  14% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(40px);
+            transform: scale(0.4) translateY(40px);
+  }
+  15%, 19% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(-20px);
+            transform: scale(0.4) translateY(-20px);
+  }
+  28%, 29.99% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  36% {
+    opacity: 1;
+    -webkit-transform: scale(0.9) translateY(5px);
+            transform: scale(0.9) translateY(5px);
+  }
+  44% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(40px);
+            transform: scale(0.4) translateY(40px);
+  }
+  45%, 49% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(-20px);
+            transform: scale(0.4) translateY(-20px);
+  }
+  58%, 59.99% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  66% {
+    opacity: 1;
+    -webkit-transform: scale(0.9) translateY(5px);
+            transform: scale(0.9) translateY(5px);
+  }
+  74% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(40px);
+            transform: scale(0.4) translateY(40px);
+  }
+  75%, 79% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(-20px);
+            transform: scale(0.4) translateY(-20px);
+  }
+  88%, 100% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+}
+
+@keyframes trackBallSlide {
+  0% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  6% {
+    opacity: 1;
+    -webkit-transform: scale(0.9) translateY(5px);
+            transform: scale(0.9) translateY(5px);
+  }
+  14% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(40px);
+            transform: scale(0.4) translateY(40px);
+  }
+  15%, 19% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(-20px);
+            transform: scale(0.4) translateY(-20px);
+  }
+  28%, 29.99% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  30% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  36% {
+    opacity: 1;
+    -webkit-transform: scale(0.9) translateY(5px);
+            transform: scale(0.9) translateY(5px);
+  }
+  44% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(40px);
+            transform: scale(0.4) translateY(40px);
+  }
+  45%, 49% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(-20px);
+            transform: scale(0.4) translateY(-20px);
+  }
+  58%, 59.99% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  60% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+  66% {
+    opacity: 1;
+    -webkit-transform: scale(0.9) translateY(5px);
+            transform: scale(0.9) translateY(5px);
+  }
+  74% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(40px);
+            transform: scale(0.4) translateY(40px);
+  }
+  75%, 79% {
+    opacity: 0;
+    -webkit-transform: scale(0.4) translateY(-20px);
+            transform: scale(0.4) translateY(-20px);
+  }
+  88%, 100% {
+    opacity: 1;
+    -webkit-transform: scale(1) translateY(-20px);
+            transform: scale(1) translateY(-20px);
+  }
+}
+
+@-webkit-keyframes nudgeMouse {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  20% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  30% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  60% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  80% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  90% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@keyframes nudgeMouse {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  20% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  30% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  60% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  80% {
+    -webkit-transform: translateY(8px);
+            transform: translateY(8px);
+  }
+  90% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes nudgeText {
+  0% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  20% {
+    -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+  }
+  30% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  50% {
+    -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+  }
+  60% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+  80% {
+    -webkit-transform: translateY(2px);
+            transform: translateY(2px);
+  }
+  90% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+  }
+}
+/*# sourceMappingURL=main.css.map */

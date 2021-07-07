@@ -1,0 +1,48 @@
+<%- include('header') %>
+    <section name="contacts">
+        <div class="head">
+            <h1>Kontaktanfragen
+                <div class="right">
+                    <p><%- contacts.length %></p>
+                    <a href="/outputs/polls.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </h1>
+            <h4>Alle Kontaktanfragen auf einem Blick!</h4>
+        </div>
+        
+        <div class="cards">
+            <% contacts.forEach(function(contact) { %>
+            <div class="card">
+                <div class="card-top">
+                    <div class="information">
+                        <h3><%- contact.name %> <span><%- contact.date.getDate() %>.<%- contact.date.getMonth()+1 %>.<%- contact.date.getFullYear() %></span></h3>
+                    </div>
+                    <div class="information">
+                        <svg viewBox="10 10 10 10">
+                            <text x="0" y="15"><%- contact.email %></text>
+                        </svg>
+                    </div>
+                    <div class="information">
+                        <p><%- contact.message %></p>
+                    </div>
+                </div>
+                <div class="card-answer">
+                    <form action="/send" method="POST">
+                        <div class="input-field">
+                            <label for="subject">Betreff:</label>
+                            <input type="text" name="subject">
+                        </div>
+                        <div class="input-field">
+                            <label for="message">Nachricht:</label>
+                            <textarea name="message" id="" cols="30" rows="10"></textarea>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <% }); %>
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<%- include('header') %>
+
+    <section name="summit">
+        <div class="card polls">
+            <div class="head">
+                <h2>Abstimmung</h2>
+                <div class="download">
+                    <a href="/outputs/polls.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="graph">
+                <svg></svg>
+                <p><%- polls.length %></p>
+            </div>
+        </div>
+        <div class="card abonements">
+            <div class="head">
+                <h2>Abonennten</h2>
+                <div class="download">
+                    <a href="/outputs/abonements.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="graph">
+                <svg></svg>
+                <p><%- emails.length %></p>
+            </div>
+        </div>
+        <div class="card contacts">
+            <div class="head">
+                <h2>Kontaktanfragen</h2>
+                <div class="download">
+                    <a href="/outputs/contacts.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="graph">
+                <svg></svg>
+                <p><%- contacts.length %></p>
+            </div>
+        </div>
+    </section>
+</body>

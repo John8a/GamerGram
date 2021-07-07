@@ -1,0 +1,235 @@
+:root {
+  font-family: Montserrat;
+  --primary-background: linear-gradient(90deg, #B474E7 0%, #EF4AB7 100%);
+  --grey-background: #F5F5F5;
+  --white-: #fff;
+  --black-: #000;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1080px) {
+  section[name="hero"] {
+    background-size: 100%;
+  }
+  section[name="hero"] .right {
+    padding-top: 20%;
+  }
+}
+
+@media only screen and (max-width: 1080px) and (max-height: 900px) {
+  section[name="hero"] {
+    background-size: 100%;
+  }
+  section[name="hero"] .right {
+    padding-top: 0%;
+  }
+}
+
+@media only screen and (max-width: 980px) {
+  header {
+    background-color: #fff;
+    width: 100%;
+    height: 100px;
+    border-radius: 0 0 70px 70px;
+  }
+  header .nav-links {
+    display: none;
+  }
+  header .logo {
+    width: 100%;
+    text-align: center;
+  }
+  header .logo a {
+    font-size: 45px;
+  }
+  .mobile-navbar {
+    display: block;
+    z-index: 1000;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    background-color: var(--white-);
+    padding: 10px 0;
+  }
+  .mobile-navbar .nav-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+  }
+  .mobile-navbar .nav-links .link {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: start;
+        -ms-flex-pack: start;
+            justify-content: flex-start;
+    text-decoration: none;
+  }
+  .mobile-navbar .nav-links .link img {
+    height: 30px;
+  }
+  .mobile-navbar .nav-links .link p {
+    color: #b1b1b1;
+    font-weight: 200;
+    padding-top: 5px;
+  }
+  .mobile-navbar .nav-links .link:last-child img {
+    position: relative;
+    bottom: -5px;
+  }
+  section[name="hero"] {
+    height: 97vh;
+    background-size: 250%;
+    background-attachment: fixed;
+    background-position-x: -150px;
+    background-position-y: -200px;
+    background-image: url("/images/background-hero-mobile.png");
+  }
+  section[name="hero"] .mouse {
+    bottom: 12%;
+  }
+  section[name="hero"] .left {
+    width: 100%;
+  }
+  section[name="hero"] .left .container {
+    width: 75%;
+  }
+  section[name="hero"] .left .container h1 {
+    font-size: 35px;
+  }
+  section[name="hero"] .left .container h1 .background {
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 1px 2px;
+    display: inline;
+    margin: 0;
+  }
+  section[name="hero"] .right {
+    width: unset;
+    padding-top: 15%;
+  }
+  section[name="features"].small {
+    height: unset;
+  }
+  section[name="features"] .cards {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  section[name="features"] .cards .card {
+    -ms-flex-preferred-size: unset;
+        flex-basis: unset;
+    margin: 20px 25px 0;
+    height: unset;
+    font-size: 12px;
+  }
+  section[name="features"] .cards .card .card-top {
+    margin-bottom: 0;
+  }
+  section[name="features"] .cards .card .card-top h3 {
+    font-size: 14px;
+  }
+  section[name="enroll"] .head {
+    margin-top: 20px;
+  }
+  section[name="enroll"] div form {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  section[name="enroll"] div form input {
+    font-size: 14px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  section[name="enroll"] div form button {
+    margin-left: 10px;
+    font-size: 14px;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    display: inline;
+  }
+  section[name="enroll"] div form p {
+    font-size: 10px;
+  }
+  section[name="news"] .container {
+    overflow-x: scroll;
+    -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+  }
+  section[name="news"] .cards {
+    margin: 0;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+  }
+  section[name="news"] .cards .card {
+    width: 300px;
+  }
+  section[name="contact"] {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  section[name="contact"] .left, section[name="contact"] .right {
+    width: 100%;
+    margin: 0;
+  }
+  section[name="contact"] .left h4, section[name="contact"] .right h4 {
+    margin: 20px 0;
+  }
+  section[name="contact"] .left .media-links, section[name="contact"] .right .media-links {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+  }
+  section[name="contact"] .left .media-links .social-media .information, section[name="contact"] .right .media-links .social-media .information {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  section[name="contact"] .left .media-links .social-media .information p, section[name="contact"] .right .media-links .social-media .information p {
+    display: none;
+  }
+  footer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin: 10px 0;
+  }
+}
+
+@media only screen and (max-width: 1080px) {
+  section[name="hero"] {
+    background-size: 200%;
+  }
+  section[name="hero"] .right {
+    display: none;
+  }
+}
+/*# sourceMappingURL=mobile.css.map */

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Abos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+</head>
+<body>
+    <header>
+        <a href="/abonements.xlsx" class="download"><img src="/images/Download.svg" alt=""></a>
+        <a href="" class="user"></a>
+    </header>
+
+    <table>
+    <% emails.forEach(function(email) { %>
+    <tr>
+        <td><%- email.date.getDate() %>.<%- email.date.getMonth()+1 %>.<%-email.date.getFullYear() %></td>
+        <td><%- email.email %></td>
+        <td>
+            <form action="/abo/<%= email._id %>?_method=DELETE" method="POST">
+                <button>X</button>
+            </form>
+        </td>    
+    </tr>
+    <% }); %>
+    </table>
+
+</body>
+<footer>
+
+</footer>

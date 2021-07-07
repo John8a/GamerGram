@@ -1,0 +1,21 @@
+<%- include('header') %>
+
+    <section name="summit">
+        <div class="polls">
+            <div class="head">
+                <h2>Abstimmung</h2>
+                <div class="download">
+                    <a href="/outputs/polls.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </div>
+            <div class="graph">
+                <svg></svg>
+                <p><%- contacts.length %></p>
+            </div>
+        </div>
+        <div class="contacts"></div>
+        <div class="abonnements"></div>
+    </section>
+</body>

@@ -1,0 +1,70 @@
+<%- include('header') %>
+    <section name="contacts">
+        <div class="head">
+            <h1>Kontaktanfragen
+                <div class="right">
+                    <p><%- contacts.length %></p>
+                    <a href="/outputs/polls.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </h1>
+            <h4>Alle Kontaktanfragen auf einem Blick!</h4>
+        </div>
+        
+        <div class="cards">
+            <% contacts.forEach(function(contact) { %>
+            <div class="card">
+                <div class="card-top">
+                    <div class="information">
+                        <h3><%- contact.name %> <span><%- contact.date.getDate() %>.<%- poll.date.getMonth()+1 %>.<%- poll.date.getFullYear() %></span></h3>
+                    </div>
+                    <div class="information">
+                        <h3><%- contact.email %></h3>
+                    </div>
+                    <div class="information">
+                        <p><%- contact.message %></p>
+                    </div>
+                </div>
+                <div class="card-text">
+                    <form action="/send" method="POST">
+                        <div class="input-field">
+                            <label for="">Betreff</label>
+                            <input type="text">
+                        </div>
+                        <div class="input-field">
+                            <label for="">Nachricht</label>
+                            <input type="text">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+</html>
+
+
+
+<table>
+    <tr class="header">
+        <th>Datum</th>
+        <th>Name</th>
+        <th>E-Mail</th>
+        <th>Nachricht</th>
+        <th>Entfernen</th>
+    </tr>
+    <% contacts.forEach(function(contact) { %>
+    <tr>
+        <td><%- contact.date.getDate() %>.<%- poll.date.getMonth()+1 %>.<%- poll.date.getFullYear() %></td>
+        <td><%- contact.name %></td>
+        <td><%- contact.email %></td>
+        <td><%- contact.message %></td>
+        <td>
+            <form action="/poll/<%= poll._id %>?_method=DELETE" method="POST">
+                <button>X</button>
+            </form>
+        </td>    
+    </tr>
+    <% }); %>
+</table>

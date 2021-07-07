@@ -1,0 +1,101 @@
+var express         = require("express"),
+    app             = express(),
+    mongoose        = require("mongoose"),
+    methodOverride  = require("method-override"),
+    expressSanitizer= require("express-sanitizer"),
+    exceljs         = require("exceljs"),
+    nodemailer      = require("nodemailer");
+
+var Abonnements     = require("./models/abonnements");
+// require("mongoose-type-url");
+// require('mongoose-type-email');
+
+const workbook = new exceljs.Workbook();
+
+
+try {
+    mongoose.connect('mongodb://localhost/gamergram', { useNewUrlParser: true });
+} catch (error) {
+    handleError(error);
+}
+
+
+require("dotenv").config();
+
+app.use(express.urlencoded({extended: true}));
+app.use(express.static("public"));
+app.use(methodOverride("_method"));
+app.use(expressSanitizer());
+app.set("view engine", "ejs");
+app.use(require('express-session')({
+    secret: "Gamergram",
+    resave: false,
+    saveUninitialized: false
+}));
+app.use(async (req, res) => {
+    const abos = await Abonnements(req.body);
+    abos.forEach(email => {
+        workbook.created = email.created.getDate()
+    });
+});
+
+app.get("/", function(req, res) {
+    res.render("index");
+});
+
+app.post("/abo", async (req, res) => {
+    const newAbo = new Abonnements(req.body);
+    await newAbo.save();
+    console.log(newAbo);
+    res.redirect("/");
+});
+
+app.get("/dashboard/abo", async (req, res) => {
+    const emails = await Abonnements.find();
+    res.render("dashboard/abonnements", { emails });
+});
+
+app.delete("/abo/:id", async (req, res) => {
+    const { id } =  req.params; 
+    console.log(id);
+    await Abonnements.findByIdAndDelete(id);
+    res.redirect("/dashboard/abo");
+});
+
+app.post("/send", (req, res) => {
+    var output = "<h2>Nachricht von jemandem!</h2><table><tr><td><strong>Name: </strong></td><td>" + req.body.name + "</td></tr><tr><td><strong>E-Mail: </strong></td><td>" + req.body.email + "</td></tr><table><h3>Nachricht:</h3><p>" + req.body.message + "</p>";
+    let transporter = nodemailer.createTransport({
+        host: 'smtp.gmail.com',
+        port: 465,
+        secure: true,
+        auth: {
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD,
+        },
+        tls: {
+            rejectUnauthorized: false,
+        }
+    });
+
+    let mailOptions = {
+        from: req.body.email,
+        to: process.env.EMAIL,
+        subject: 'Kontakt',
+        text: req.body.text,
+        html: output
+    };
+
+    transporter.sendMail(mailOptions, (err, data) => {
+        if(err) {
+            console.log("ERROR!", err, req.body);
+        } else {
+            console.log("Mail has been sent!", req.body.email);
+        }
+        res.redirect("/")
+    });
+})
+
+
+app.listen(process.env.PORT || 3000, () => {
+    console.log("Server started!");
+});

@@ -1,0 +1,1 @@
+var cardAnswer = document.querySelectorAll(".card-answer");
