@@ -1,0 +1,64 @@
+header {
+  margin: 20px 150px 50px;
+}
+
+header .logo a {
+  text-decoration: none;
+  font-size: 35px;
+  font-family: 'Roboto';
+  display: block;
+  color: #000;
+}
+
+section[name="datenschutz"], section[name="impressum"] {
+  font-family: 'Montserrat';
+  margin: 20px 150px;
+}
+
+section[name="datenschutz"] .head, section[name="impressum"] .head {
+  -webkit-animation: fade-up 0.4s linear forwards;
+          animation: fade-up 0.4s linear forwards;
+  margin-bottom: 40px;
+}
+
+section[name="datenschutz"] .head p, section[name="impressum"] .head p {
+  font-size: 25px;
+}
+
+section[name="datenschutz"] .head h2, section[name="impressum"] .head h2 {
+  font-size: 45px;
+}
+
+section[name="datenschutz"] ul, section[name="impressum"] ul {
+  margin: 10px 15px;
+}
+
+section[name="datenschutz"] ul li, section[name="impressum"] ul li {
+  margin: 10px 0;
+  list-style: none;
+}
+
+section[name="datenschutz"] ul li a i, section[name="impressum"] ul li a i {
+  margin-right: 5px;
+}
+
+section[name="datenschutz"] h2, section[name="datenschutz"] h3, section[name="datenschutz"] h4, section[name="impressum"] h2, section[name="impressum"] h3, section[name="impressum"] h4 {
+  margin: 20px 0;
+}
+
+@media screen and (max-width: 1200px) {
+  header .socialmedia {
+    right: 20px;
+  }
+  nav .links {
+    margin: 20px 50px !important;
+  }
+  nav .links .link {
+    font-size: 14px;
+    padding: 5px 2px;
+  }
+  section[name="datenschutz"], section[name="impressum"], header {
+    margin: 50px;
+  }
+}
+/*# sourceMappingURL=policy.css.map */

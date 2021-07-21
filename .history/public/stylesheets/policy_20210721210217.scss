@@ -1,0 +1,89 @@
+header {
+    .logo {
+        a {
+            text-decoration: none;
+            font-size: 35px;
+            font-family: 'Roboto';
+            margin: 20px 150px;
+            display: block;
+            color: #000;
+        }
+    }
+}
+
+nav {
+    margin: 0;
+    animation: fade-down 0.2s linear forwards, fade-in 0.25s linear forwards;
+
+    .links {
+        margin: 20px 150px;
+        align-items: center;
+
+        .link {
+            color: #000;
+            margin: 0 40px 0 0;
+        }
+    }
+}
+
+section[name="datenschutz"], section[name="impressum"] {
+    margin: 20px 150px;
+
+    .head {
+        animation: fade-up 0.4s linear forwards;
+        margin-bottom: 40px;
+
+        p {
+            font-size: 25px;
+        }
+
+        h2 {
+            font-size: 45px;
+        }
+
+    }
+
+    ul {
+        margin: 10px 15px;
+
+        li {
+            margin: 10px 0;
+            list-style: none;
+
+            a {
+
+                i {
+                    margin-right: 5px;
+                }
+            }
+        }
+    }
+    
+    h2, h3, h4 {
+        margin: 20px 0;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    
+    header {
+        .socialmedia {
+            right: 20px;
+        }
+    }
+
+    nav {
+        .links {
+            margin: 20px 50px !important;
+            
+            .link {
+                font-size: 14px;
+                padding: 5px 2px;
+            }
+        }
+    }
+
+    section[name="datenschutz"], section[name="impressum"] {
+        margin: 50px;
+    }
+}

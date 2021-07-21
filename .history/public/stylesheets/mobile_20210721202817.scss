@@ -1,0 +1,244 @@
+:root {
+    font-family: Montserrat;
+    --primary-background: linear-gradient(90deg, #B474E7 0%, #EF4AB7 100%);
+    --grey-background: #F5F5F5;
+    --white-: #fff;
+    --black-: #000;
+}
+  
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+@media only screen and (max-width: 1080px) {
+    section[name="hero"] {
+        background-size: 100%;
+
+        .right {
+            padding-top: 20%;
+        }
+    }
+}
+
+@media only screen and (max-width: 1080px) and (max-height: 900px) {
+    section[name="hero"] {
+        background-size: 100%;
+
+        .right {
+            padding-top: 0%;
+        }
+    }
+}
+
+@media only screen and (max-width: 980px) {
+    header {
+        background-color: #fff;
+        width: 100%;
+        height: 100px;
+        border-radius: 0 0 70px 70px;
+
+        .nav-links {
+            display: none;
+        }
+
+        .logo {
+            width: 100%;
+            text-align: center;
+            a {
+                font-size: 45px;
+            }
+        }
+
+    }
+
+    .mobile-navbar {
+        display: block;
+        z-index: 1000;
+        position: fixed;
+        width: 100%;
+        bottom: 0;
+        left: 0;
+        background-color: var(--white-);
+        padding: 10px 0 20px;
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+            
+            .link {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                text-decoration: none;
+
+                img {
+                    height: 30px;
+                }
+
+                p {
+                    color: #b1b1b1;
+                    font-weight: 200;
+                    padding-top: 5px;
+                }
+
+                &:last-child {
+                    img {
+                        position: relative;
+                    }
+                }
+            }
+        }
+    }
+
+    section[name="hero"] {
+        height: 97vh;
+        background-size: 250%;
+        background-attachment: fixed;
+        background-position-x: -150px;
+        background-position-y: -200px;
+        background-image: url("/images/background-hero-mobile.png");
+
+        .mouse {
+            bottom: 12%;
+        }
+
+        .left {
+            width: 100%;
+
+            .container {
+                width: 75%;
+
+                h1 {
+                    font-size: 35px;
+
+                    .background {
+                        padding: 1px 2px;
+                        display: inline;
+                        margin: 0;
+                        background-color: rgba($color: #fff, $alpha: 0.75);
+                    }
+                }
+            }
+        }
+
+        .right {
+            // display: none;
+            width: unset;
+            padding-top: 15%;
+        }
+    }
+
+    section[name="features"] {
+        &.small {
+            height: unset;
+        }
+
+        .cards {
+            flex-wrap: wrap;
+
+            .card {
+               flex-basis: unset;
+               margin: 20px 25px 0;
+               height: unset;
+               font-size: 12px;
+
+               .card-top {
+                   margin-bottom: 0;
+
+                   h3 {
+                       font-size: 14px;
+                   }
+               }
+            }
+        }
+    }
+
+    section[name="enroll"] {
+        .head {
+            margin-top: 20px;
+        }
+
+        div form {
+            width: fit-content;
+            
+            input {
+                font-size: 14px;
+                width: fit-content;
+            }
+
+            button {
+                margin-left: 10px;
+                font-size: 14px;
+                width: fit-content;
+                display: inline;
+            }
+
+            p {
+                font-size: 10px;
+            }
+        }
+    }
+
+    section[name="news"] {
+        .container {
+            overflow-x: scroll;
+            flex-wrap: nowrap;
+        }
+        
+        .cards {
+            margin: 0;
+            width: fit-content;
+
+            .card {
+                width: 300px;
+            }
+        }
+    }
+
+    section[name="contact"] {
+        flex-direction: column;
+
+        .left, .right {
+            width: 100%;
+            margin: 0;
+
+            h4 {
+                margin: 20px 0
+            }
+
+            .media-links {
+                display: flex;
+                
+                .social-media {
+
+                    .information {
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        p {
+                            display: none;
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    footer {
+        flex-direction: column;
+        margin: 10px 0;
+    }
+}
+
+@media only screen and (max-width: 1080px) {
+    section[name="hero"] {
+        background-size: 200%;
+
+        .right {
+            display: none;
+        }
+    }
+}
