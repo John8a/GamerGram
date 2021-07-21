@@ -176,12 +176,7 @@ app.get("/dashboard", isLoggedIn, async (req, res) => {
     res.render("dashboard/index", { emails, polls, contacts, news });
 });
 
-app.get("/dashboard/contact", isLoggedIn, async (req, res) => {
-  const contacts = await Contact.find();
-  res.render("dashboard/contacts", { contacts });
-});
-
-app.get("/dashboard/abo", isLoggedIn, exportExcelData, async (req, res) => {
+app.get("/dashboard/abo", exportExcelData, async (req, res) => {
     const emails = await Abonnements.find();
     const currentUser = "asdasd";
     res.render("dashboard/abonnements", { emails, currentUser });
@@ -196,8 +191,10 @@ app.get("/dashboard/poll", isLoggedIn, async (req, res) => {
     try {
         const polls = await Poll.find();
         res.render("dashboard/polls", { polls });
+        next();
     } catch (error) {
         console.log("Fehler: " + error);
+        res.redirect("back");
     }
 });
 
@@ -248,6 +245,11 @@ app.delete("/poll/:id", isLoggedIn, async (req, res) => {
     res.redirect("/dashboard/poll");
 });
 
+
+app.get("/dashboard/contact", isLoggedIn, async (req, res) => {
+    const contacts = await Contact.find();
+    res.render("dashboard/contacts", { contacts });
+});
 
 app.post("/send", async (req, res) => {
     const newContact = new Contact(req.body);

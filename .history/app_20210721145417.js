@@ -181,7 +181,7 @@ app.get("/dashboard/contact", isLoggedIn, async (req, res) => {
   res.render("dashboard/contacts", { contacts });
 });
 
-app.get("/dashboard/abo", isLoggedIn, exportExcelData, async (req, res) => {
+app.get("/dashboard/abo", exportExcelData, async (req, res) => {
     const emails = await Abonnements.find();
     const currentUser = "asdasd";
     res.render("dashboard/abonnements", { emails, currentUser });
