@@ -1,0 +1,40 @@
+<%- include('header') %>
+<section name="user">
+    <div class="head">
+        <h1>Einstellungen</h1>
+        <hr>
+        <div class="intro">
+            <h3>Servus, <%- user.username %>!</h3>
+            <p><%- new Date().getDate() %>.<%- new Date().getMonth() + 1 %>.<%- new Date().getFullYear() %></p>
+        </div>
+    </div>
+    <div class="dashboard">
+        <div class="information">
+            <h4>Account-Einstellungen</h4>
+            <p>Ändere Deine Nutzereinstellungen. Merk Dir aber unbedingt Dein Passwort. Wir können es nicht mehr heraussuchen</p>
+        </div>
+        <form action="/dashboard/<%- user._id %>?_METHOD=PUT" method="post">
+            <div class="user-input">
+                <label for="">Benutzername</label>
+                <input type="text" value="<%- user.username %>">
+            </div>
+            <div class="user-input">
+                <label for="">Name</label>
+                <input type="text" value="<%- user.name %>">
+            </div>
+            <div class="user-input">
+                <label for="">E-Mail</label>
+                <input type="text" value="<%- user.email %>">
+            </div>
+            <div class="user-input">
+                <label for="">Bild URL</label>
+                <input type="text" value="<%- user.image %>">
+            </div>
+            <div class="user-input">
+                <label for="">Passwort</label>
+                <input type="text" value="<%- user.password %>">
+            </div>
+            <button>Fertig!</button>
+        </form>
+    </div>
+</section>

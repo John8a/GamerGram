@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamergram</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/authentication.css">
+</head>
+<body>
+
+    <form action="/register" method="POST">
+        <div class="head">
+            <h1>Registrieren</h1>
+            <h4>Falls Du den Code nicht kennst, probiers nicht.</h4>
+        </div>
+
+        <div class="input-field">
+            <input type="text" name="username" placeholder="Benutzername">
+        </div>
+        <div class="input-field">
+            <input type="email" name="email" placeholder="E-Mail">
+        </div>
+        <div class="input-field">
+            <input type="password" name="password" placeholder="Passwort">
+        </div>
+        <div class="input-field">
+            <input type="password" name="code" placeholder="Code">
+            <span>* Wir speichern Deine IP-Adresse, in jedem Fall.</span>
+        </div>
+        <button>Registrieren <i class="fas fa-arrow-right"></i></button>
+    </form>
+
+</body>

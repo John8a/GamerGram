@@ -1,0 +1,49 @@
+<%- include('header') %>
+    <section name="contacts">
+        <div class="head">
+            <h1><%- shows[0].title %>
+                <div class="right">
+                    <p><%- shows.length %></p>
+                    <a href="/outputs/contacts.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </h1>
+            <h4><%- shows[0].subtitle %></h4>
+        </div>
+
+
+        <table>
+            <tr class="header">
+                <th>Datum</th>
+                <% if (shows[0].title === "Abonennten") { %>
+                <th>E-Mail-Adresse</th>
+                <% } %>
+                <% if (shows[0].title === "Polls") { %>
+                <th>Nachricht</th>
+                <th>Ja/Nein</th>
+                <% } %>
+                <th>Entfernen</th>
+            </tr>
+            <% shows.forEach(function(show) { %>
+            <tr>
+                <td><%- show.date.getDate() %>.<%- show.date.getMonth()+1 %>.<%-show.date.getFullYear() %></td>
+                <% if (shows[0].title === "Abonennten") { %>
+                    <td><%- show.email %></td>
+                <% } %>
+                <% if (shows[0].title === "Polls") { %>
+                    <td><%- poll.message %></td>
+                    <td><%- poll.poll %></td>
+                <% } %>
+                <td>
+                    <form action="/dashboard/<%= show._id %>?_method=DELETE" method="POST">
+                        <button>X</button>
+                    </form>
+                </td>    
+            </tr>
+            <% }); %>
+        </table>
+    </section>
+</body>
+<script src="/scripts/contact.js"></script>
+</html>

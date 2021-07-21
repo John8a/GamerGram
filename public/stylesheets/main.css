@@ -46,7 +46,8 @@ body {
 }
 
 .flash-message.hide {
-  display: none;
+  opacity: 0;
+  display: block;
 }
 
 .flash-message p {
@@ -164,11 +165,46 @@ section[name="hero"] .left .container {
           justify-content: center;
 }
 
+section[name="hero"] .left .container .tipp-animation {
+  position: relative;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+}
+
+section[name="hero"] .left .container .tipp-animation::before, section[name="hero"] .left .container .tipp-animation::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+
+section[name="hero"] .left .container .tipp-animation::before {
+  background: var(--grey-background);
+  -webkit-animation: typer 2s steps(24) forwards;
+          animation: typer 2s steps(24) forwards;
+}
+
+section[name="hero"] .left .container .tipp-animation::after {
+  width: 0.125em;
+  background: black;
+  -webkit-animation: typer 2s steps(24) forwards, caretBlink 1s infinite;
+          animation: typer 2s steps(24) forwards, caretBlink 1s infinite;
+}
+
+section[name="hero"] .left .container .question-mark {
+  opacity: 0;
+  -webkit-animation: appear 2s forwards;
+          animation: appear 2s forwards;
+}
+
 section[name="hero"] .left .container h1 {
   font-size: 45px;
 }
 
-section[name="hero"] .left .container h1 span {
+section[name="hero"] .left .container h1 span.coloured {
   background-image: var(--primary-background);
   background-size: 100%;
   background-repeat: repeat;
@@ -187,6 +223,14 @@ section[name="hero"] .left .container p {
 section[name="hero"] .left .container p.text-grey {
   color: #4b4b4b;
   font-weight: 300;
+}
+
+section[name="hero"] .left .container .poll {
+  opacity: 0;
+  -webkit-transform: translateY(5em);
+          transform: translateY(5em);
+  -webkit-animation: fadeUpBottom 300ms linear 1s forwards;
+          animation: fadeUpBottom 300ms linear 1s forwards;
 }
 
 section[name="hero"] .left .container .poll .poll-panel {
@@ -262,6 +306,11 @@ section[name="hero"] .right {
   margin-top: 5%;
   width: 40%;
   height: 100vh;
+}
+
+section[name="hero"] .right img {
+  -webkit-animation: fadeInTop 0.5s forwards;
+          animation: fadeInTop 0.5s forwards;
 }
 
 section[name="features"] .cards {
@@ -1057,6 +1106,108 @@ footer .copy p {
   90% {
     -webkit-transform: translateY(0);
             transform: translateY(0);
+  }
+}
+
+@-webkit-keyframes fadeInTop {
+  0% {
+    -webkit-transform: translateY(-25em);
+            transform: translateY(-25em);
+    opacity: 0;
+  }
+  90% {
+    -webkit-transform: translateY(3em);
+            transform: translateY(3em);
+    opacity: 1;
+  }
+  95% {
+    -webkit-transform: translateY(1em);
+            transform: translateY(1em);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInTop {
+  0% {
+    -webkit-transform: translateY(-25em);
+            transform: translateY(-25em);
+    opacity: 0;
+  }
+  90% {
+    -webkit-transform: translateY(3em);
+            transform: translateY(3em);
+    opacity: 1;
+  }
+  95% {
+    -webkit-transform: translateY(1em);
+            transform: translateY(1em);
+  }
+  100% {
+    -webkit-transform: translateY(0);
+            transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes fadeUpBottom {
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@keyframes fadeUpBottom {
+  100% {
+    opacity: 1;
+    -webkit-transform: translate(0);
+            transform: translate(0);
+  }
+}
+
+@-webkit-keyframes typer {
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes typer {
+  to {
+    left: 100%;
+  }
+}
+
+@-webkit-keyframes caretBlink {
+  to {
+    background: transparent;
+  }
+}
+
+@keyframes caretBlink {
+  to {
+    background: transparent;
+  }
+}
+
+@-webkit-keyframes appear {
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 /*# sourceMappingURL=main.css.map */
