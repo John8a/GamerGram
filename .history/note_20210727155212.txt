@@ -1,0 +1,16 @@
+        <!-- <div class="profile">
+            <a href="/dashboard/<%- currentUser._id %>" class="user">
+            <% if(currentUser.image != null) { %>
+                <img src="<%- currentUser.image %>" alt="">
+            <% } else { %>
+                <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="">
+            <% } %>
+            </a>
+            <div class="name" onclick="window.location.href='/dashboard/<%- currentUser._id %>'">
+                <h4><%- currentUser.name || currentUser.username %></h4>
+                <p><%- currentUser.email %></p>
+            </div>
+            <a href="/logout" class="logout">
+                <img src="/images/Logout.svg" alt="">
+            </a>
+        </div> -->

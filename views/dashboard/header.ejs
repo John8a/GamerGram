@@ -27,7 +27,7 @@
         <div class="profile">
             <a href="/dashboard/<%- currentUser._id %>" class="user">
             <% if(currentUser.image != null) { %>
-                <img src="<%- currentUser.image %>" alt="">
+                <img src="/images/team/<%- currentUser.image %>" alt="">
             <% } else { %>
                 <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="">
             <% } %>

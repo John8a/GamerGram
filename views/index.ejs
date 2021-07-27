@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gamergram</title>
-    <link rel="shortcut icon" href="/images/favicon-256x256.png" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;800;900&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/stylesheets/main.css">
-    <link rel="stylesheet" media="(max-width: 1200px)" href="/stylesheets/mobile.css">
-</head>
+<%- include('./partials/header') %>
 <body>
     <header>
         <div class="logo">
@@ -196,7 +183,7 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
             </div>
         </div>
         <div class="right">
-            <form action="">
+            <form action="/send" method="POST">
                 <div class="input-field">
                     <label for="name">Dein Name</label>
                     <div class="input">
@@ -220,65 +207,5 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
         </div>
     </section>
 </body>
-<footer>
-    <link rel="stylesheet" href="/stylesheets/cookies.css">
-        
-    <section name="cookies">
-        <div class="content">
-            <div class="card-top">
-                <img src="/images/cookiemonster-alone.png" alt="">
-                <h2>Cookie-Einstellungen</h2>
-                <p>Ich nutze Cookies, um die Webseite zu verbessern</p>
-            </div>
-            <div class="card-body">
-                <div class="row">
-                    <div class="description">
-                        <p>
-                            Die Webseite sammelt Cookies ausschließlich zum Verbessern der Webseite. Eine Weitergabe der
-                            Daten an Dritte ist
-                            ausgeschlossen.
-                        </p>
-                        <p>Für Weiteres in der Datenschutzerklärung nachschauen.</p>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="slider">
-                        <label class="switch">
-                            <input type="checkbox" checked disabled>
-                            <span class="slider round"></span>
-                        </label>
-                    </div>
-                    <p class="description">Essenzielle Cookies <span>Google Analytics</span></p>
-                </div>
-                <div class="row">
-                    <button onclick="window.location='/datenschutz'" class="datenschutz">Datenschutzerklärung</button>
-                    <button class="save-selection">Akzeptieren</button>
-                </div>
-            </div>
-        </div>
-    </section>
-    <div class="privacy-policies">
-        <a href="/impressum">
-            Impressum
-        </a>
-        <a href="/datenschutz">
-            Datenschutzerklärung
-        </a>
-    </div>
-    <div class="copy">
-        <p>&copy; Gamergram UG <%- new Date().getFullYear() %></p>
-    </div>
-</footer>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
-<script src="/scripts/cookies.js"></script>
-<script>
-    if(!answeredCookie) {
-        $(window).on("load", function () {
-            console.log("Cookieeeees!");
-            checkCookie("cookie");
-        });
-    }
-</script>
-<script src="/scripts/animations.js"></script>
-<script src="/scripts/poll.js"></script>
+<%- include('./partials/footer') %>
 </html>

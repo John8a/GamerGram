@@ -6,22 +6,22 @@ var express         = require("express"),
     expressSanitizer= require("express-sanitizer"),
     passport		= require("passport"),
 	LocalStrategy	= require("passport-local"),
-    nodemailer      = require("nodemailer"),
-    multer          = require("multer");
+    nodemailer      = require("nodemailer");
     
 var Abonnements     = require("./models/abonnements");
 var Poll            = require("./models/poll");
 var Contact         = require("./models/contacts");
 var User            = require("./models/user");
 var News            = require("./models/news");
-var exportData      = require("./routes/exportExcelData");
+var dashboard       = require("./routes/dashboard");
 var catchAsync      = require("./utils/catchAsync");
 
 
 mongoose.connect('mongodb+srv://johnhardenberg:Lehecejo6!@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
 	useNewUrlParser: true,
 	useCreateIndex: true,
-	useUnifiedTopology: true
+	useUnifiedTopology: true,
+    useFindAndModify: false
 }).then(() => {
 	console.log('Connected to DB!');
 }).catch(err => {
@@ -90,19 +90,6 @@ app.use((req, res, next) => {
     res.locals.currentUser = req.user;
     next();
 });
-
-var upload = multer({ dest: 'public/images/team/' });
-
-
-
-const exportExcelData = (req, res, next) => {
-    const workSheetColumnNames = [
-        "Datum",
-        "E-Mail",
-    ]
-    exportData(workSheetColumnNames);
-    next();
-};
 
 app.get("/", async (req, res) => {
     try {
@@ -175,87 +162,6 @@ app.get("/logout", (req, res) => {
     req.logout();
     res.redirect("/");
 });
-
-app.get("/dashboard", isLoggedIn, async (req, res) => {
-    const emails = await Abonnements.find();
-    const polls = await Poll.find();
-    const contacts = await Contact.find();
-    const news = await News.find();
-    res.render("dashboard/index", { emails, polls, contacts, news });
-});
-
-app.get("/dashboard/contact", isLoggedIn, async (req, res) => {
-  const contacts = await Contact.find();
-  res.render("dashboard/contacts", { contacts });
-});
-
-app.get("/dashboard/abo", isLoggedIn, exportExcelData, async (req, res) => {
-    const emails = await Abonnements.find();
-    const currentUser = "asdasd";
-    res.render("dashboard/abonnements", { emails, currentUser });
-});
-
-app.get("/dashboard/news", isLoggedIn, async (req, res) => {
-  const news = await News.find().sort({ date: -1 });
-  res.render("dashboard/news", { news });
-});
-
-app.get("/dashboard/poll", isLoggedIn, async (req, res) => {
-    try {
-        const polls = await Poll.find();
-        res.render("dashboard/polls", { polls });
-    } catch (error) {
-        console.log("Fehler: " + error);
-    }
-});
-
-app.post("/dashboard/news", isLoggedIn, async (req, res) => {
-  const newArticle = new News(req.body);
-  await newArticle.save();
-  console.log(newArticle);
-  res.redirect("/");
-});
-
-app.put("/dashboard/news/:id", isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    const article = await News.findByIdAndUpdate(id, { ...req.body });
-    console.log(article);
-    res.redirect("/dashboard/news");
-});
-
-app.delete("/dashboard/news/:id", isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    await News.findByIdAndDelete(id);
-    res.redirect("/dashboard/news");
-});
-
-app.get("/dashboard/:id", isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findById(id).sort({ date: -1 });
-    res.render("dashboard/user", { user });
-});
-
-app.put("/dashboard/:id", upload.single("uploadImage"), isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    const user = await User.findByIdAndUpdate(id, {... req.body});
-    image = "/public/images/team/" + req.body.image;
-    console.log(user);
-    res.redirect("back");
-})
-
-app.delete("/abo/:id", isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    console.log(id);
-    await Abonnements.findByIdAndDelete(id);
-    res.redirect("/dashboard/abo");
-});
-
-app.delete("/poll/:id", isLoggedIn, async (req, res) => {
-    const { id } = req.params;
-    await Poll.findByIdAndDelete(id);
-    res.redirect("/dashboard/poll");
-});
-
 
 app.post("/send", async (req, res) => {
     const newContact = new Contact(req.body);
@@ -331,16 +237,7 @@ app.post("/sendanswer", async (req, res) => {
 
 // UPLOAD
 
-
-// MIDDLEWARE
-
-function isLoggedIn(req, res, next){
-	if(!req.isAuthenticated()) {
-        return res.redirect('/login');
-    }
-    return next();
-};
-
+app.use(dashboard);
 
 
 app.listen(process.env.PORT || 3000, () => {

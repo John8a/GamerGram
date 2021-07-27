@@ -14,6 +14,7 @@
 
 .inner-container {
     position: relative;
+    height: 465px;
 }
 
 .fade-out {
@@ -22,21 +23,20 @@
     height: 465px;
 
     &.left {
-        left: 500px;
-        background: #f5f5f5;
-        background: -moz-linear-gradient(90deg, #f5f5f5 0%, rgba(255,255,255,0) 100%);
-        background: -webkit-linear-gradient(90deg, #f5f5f5 0%, rgba(255,255,255,0) 100%);
-        background: linear-gradient(90deg, #f5f5f5 0%, rgba(255,255,255,0) 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f7f7f7",endColorstr="#f5f5f5",GradientType=1);
+        background: #fff;
+        background: -moz-linear-gradient(90deg, #fff 0%, rgba(255,255,255,0) 100%);
+        background: -webkit-linear-gradient(90deg, #fff 0%, rgba(255,255,255,0) 100%);
+        background: linear-gradient(90deg, #fff 0%, rgba(255,255,255,0) 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fff",endColorstr="#fff",GradientType=1);
     }
 
     &.right {
-        right: 200px;
-        background: #f5f5f5;
-        background: -moz-linear-gradient(90deg, rgba(255,255,255,0) 0%, #f5f5f5 100%);
-        background: -webkit-linear-gradient(90deg, rgba(255,255,255,0) 0%, #f5f5f5 100%);
-        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #f5f5f5 100%);
-        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f5f5f5",endColorstr="#f5f5f5",GradientType=1);
+        right: 120px;
+        background: #fff;
+        background: -moz-linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 100%);
+        background: -webkit-linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 100%);
+        background: linear-gradient(90deg, rgba(255,255,255,0) 0%, #fff 100%);
+        filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#fff",endColorstr="#fff",GradientType=1);
     }
 }
 
@@ -124,6 +124,7 @@ header {
             img {
                 width: 100%;
                 height: 100%;
+                object-fit: cover;
                 
             }
             
@@ -164,6 +165,7 @@ body {
 
 section {
     width: calc(100% - 200px);
+    padding: 100px;
 
     .head {
 
@@ -191,7 +193,7 @@ section {
             justify-content: space-between;
             width: 100%;
             font-size: 25px;
-            padding: 25px 20px;
+            padding: 15px 20px;
 
             .right {
                 display: flex;
@@ -228,6 +230,7 @@ section {
         h4 {
             font-weight: 300;
             font-size: 20px;
+            padding: 0px 20px;
         }
     }
 
@@ -362,20 +365,27 @@ section {
 }
 
 section[name="summit"] {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin: 150px auto;
-    width: 860px;
-    height: fit-content;
+
+    .head {
+        h4 {
+            padding: 20px 20px 0;
+        }
+    }
+    
+    .cards {
+        display: flex;
+        margin: 0 auto;
+        flex-wrap: wrap;
+    }
     
     .card {
-        background-color: var(--white-);
+        border: 1px solid rgba($color: #000000, $alpha: 0.1);
+        border-radius: 10px;
         width: 400px;
         padding: 20px;
         margin: 30px 15px 0;
         position: relative;
+        overflow: hidden;
 
         .graph:hover ~ .show-stats {
             opacity: 1;
@@ -448,15 +458,12 @@ section[name="summit"] {
 }
 
 section[name="abonements"], section[name="polls"] {
-    width: 50%;
-    margin: 0 auto;
-    transform: translateY(33%);
 
     table {
         border-spacing: 0px;
         width: 100%;
-        height: 50%;
         overflow-y: scroll;
+        margin: 20px;
 
         tr {
             &.header {   
@@ -512,14 +519,17 @@ section[name="abonements"], section[name="polls"] {
 }
 
 section[name="contacts"] {
-    padding: 50px 100px;
     overflow-y: hidden; 
-    width: 75%;
     margin: 0 auto;
 
     .container {
         display: flex;
         overflow-x: scroll;
+        margin: 50px 20px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
     
     .cards {
@@ -536,8 +546,10 @@ section[name="contacts"] {
             border-radius: 15px;
             box-shadow: 0 5px 10px rgba($color: #000000, $alpha: 0.1);
             overflow: hidden;
-
+            
             .card-top {
+                position: relative;
+                height: 100%;
                 &.to-answer {
                     transition: 0.2s linear;
                     margin-top: -375px;
@@ -555,10 +567,12 @@ section[name="contacts"] {
                     }
 
                     h3 {
-                        width: 100%;
+                        display: flex;
+                        align-items: baseline;
+                        justify-content: space-between;
 
                         span {
-                            float: right;
+                            font-size: 12px;
                         }
                     }
                     
@@ -580,6 +594,8 @@ section[name="contacts"] {
                         -webkit-text-fill-color: transparent; 
                         -moz-background-clip: text;
                         -moz-text-fill-color: transparent;
+                        position: absolute;
+                        bottom: 10px;
                     }
                 }
             }
@@ -593,7 +609,7 @@ section[name="contacts"] {
                     margin-bottom: 10px;
                 }
 
-                margin-top: 50px;
+                padding-top: 20px;
                 form {
                     margin: 0;
                     .input-field {
@@ -639,17 +655,25 @@ section[name="contacts"] {
 }
 
 section[name="news"] {
-    margin: 100px auto;
-    width: 60%;
 
     .container {
         background-color: #f5f5f5;
+        overflow-x: scroll;
+        margin: 50px 20px;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
     }
     
     .cards {
         display: flex;
         overflow-x: scroll;
         padding: 20px 0;
+
+        &::-webkit-scrollbar {
+            display: none;
+        }
 
         .card {
 
