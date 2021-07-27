@@ -27,26 +27,26 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
   res.render("dashboard/index", { emails, polls, contacts, news });
 });
 
-router.get("/dashboard/contact", isLoggedIn, async (req, res) => {
-  const filename = req.url.split("/")[2];
-  const contacts = await Contact.find();
-  exportData.exportUsersToExcel(contacts, Contact, filename);
-  res.render("dashboard/contacts", { contacts });
+router.get("/dashboard/contact", async (req, res) => {
+    const filename = req.url.split("/")[2];
+    const contacts = await Contact.find();
+    exportData.exportUsersToExcel(contacts, Contact, filename);
+    res.render("dashboard/contacts", { contacts });
 });
 
-router.get("/dashboard/abo", isLoggedIn, async (req, res) => {
-  const filename = req.url.split("/")[2];
-  const abos = await Abonnements.find();
-  exportData.exportUsersToExcel(abos, Abonnements, filename);
-  res.render("dashboard/abonnements", { emails: abos });
+router.get("/dashboard/abo", async (req, res) => {
+    const filename = req.url.split("/")[2];
+    const abos = await Abonnements.find();
+    exportData.exportUsersToExcel(abos, Abonnements, filename);
+    res.render("dashboard/abonnements", { emails : abos });
 });
 
-router.get("/dashboard/news", isLoggedIn, async (req, res) => {
-  const news = await News.find().sort({ date: -1 });
-  res.render("dashboard/news", { news });
+router.get("/dashboard/news", async (req, res) => {
+    const news = await News.find().sort({ date: -1 });
+    res.render("dashboard/news", { news });
 });
 
-router.get("/dashboard/poll", isLoggedIn, async (req, res) => {
+router.get("/dashboard/poll", async (req, res) => {
   try {
     const filename = req.url.split("/")[2];
     const polls = await Poll.find();
@@ -57,20 +57,20 @@ router.get("/dashboard/poll", isLoggedIn, async (req, res) => {
   }
 });
 
-router.delete("/abo/:id", isLoggedIn, async (req, res) => {
+router.delete("/abo/:id", async (req, res) => {
   const { id } = req.params;
   console.log(id);
   await Abonnements.findByIdAndDelete(id);
   res.redirect("/dashboard/abo");
 });
 
-router.delete("/poll/:id", isLoggedIn, async (req, res) => {
+router.delete("/poll/:id", async (req, res) => {
   const { id } = req.params;
   await Poll.findByIdAndDelete(id);
   res.redirect("/dashboard/poll");
 });
 
-router.post("/dashboard/news", isLoggedIn, async (req, res) => {
+router.post("/dashboard/news", async (req, res) => {
   const newArticle = new News(req.body);
   await newArticle.save();
   console.log(newArticle);
@@ -84,35 +84,30 @@ router.put("/dashboard/news/:id", async (req, res) => {
   res.redirect("/dashboard/news");
 });
 
-router.delete("/dashboard/news/:id", isLoggedIn, async (req, res) => {
+router.delete("/dashboard/news/:id", async (req, res) => {
   const { id } = req.params;
   await News.findByIdAndDelete(id);
   res.redirect("/dashboard/news");
 });
 
-router.get("/dashboard/:id", isLoggedIn, async (req, res) => {
+router.get("/dashboard/:id", async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).sort({ date: -1 });
   res.render("dashboard/user", { user });
 });
 
-router.put(
-  "/dashboard/:id",
-  isLoggedIn,
-  upload.single("uploadImage"),
-  async (req, res) => {
+router.put("/dashboard/:id", upload.single("uploadImage"), async (req, res) => {
     try {
-      const { id } = req.params;
-      console.log(req.body);
-      const user = await User.findByIdAndUpdate(id, { ...req.body });
-      console.log(user);
-      res.redirect("back");
+        const { id } = req.params;
+        console.log(req.body);
+        const user = await User.findByIdAndUpdate(id, { ...req.body });
+        console.log(user);
+        res.redirect("back");
     } catch {
-      console.log("Fehler!");
-      res.redirect("back");
+        console.log("Fehler!");
+        res.redirect("back");
     }
-  }
-);
+});
 
 
 // MIDDLEWARE
