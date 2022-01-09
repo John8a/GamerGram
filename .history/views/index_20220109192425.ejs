@@ -138,12 +138,12 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
                     <img loading="lazy" src="<%- article.image %>" alt="">
                     <div class="card-description">
                         <h2><%- article.title %></h2>
-                        <p><%- article.text.substring(0, 100) %></p>
+                        <p><%- article.text %>...</p>
                         <a href="javascript:void()" onclick="fullText(this);">Erfahre Mehr »</a>
                     </div>
                     <div class="card-description full">
                         <h2><%- article.title %></h2>
-                        <p><%- article.text %></p>
+                        <p><%- article.text%>...</p>
                         <a href="javascript:void()" onclick="fullText(this);">Zurück »</a>
                     </div>
                 </div>

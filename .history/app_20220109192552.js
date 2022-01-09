@@ -158,7 +158,7 @@ app.post("/send", async (req, res) => {
         secure: true,
         auth: {
             user: "gamergramnetwork@gmail.com",
-            pass: "m0nkeyBanana1?",
+            pass: process.env.PASSWORD,
         },
         tls: {
             rejectUnauthorized: false,
@@ -194,7 +194,7 @@ app.post("/sendanswer", async (req, res) => {
         secure: true,
         auth: {
             user: "gamergramnetwork@gmail.com",
-            pass: "m0nkeyBanana1?",
+            pass: process.env.PASSWORD,
         },
         tls: {
             rejectUnauthorized: false,

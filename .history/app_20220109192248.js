@@ -18,7 +18,7 @@ var catchAsync      = require("./utils/catchAsync");
 
 mongoose
   .connect(
-    "mongodb+srv://johnhardenberg:f5mlyg9XS8heCtcG@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+    "mongodb+srv://johnhardenberg:m0nkeyBanana1\?@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
     {
       useNewUrlParser: true,
       useCreateIndex: true,
@@ -157,8 +157,8 @@ app.post("/send", async (req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: "gamergramnetwork@gmail.com",
-            pass: "m0nkeyBanana1?",
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD,
         },
         tls: {
             rejectUnauthorized: false,
@@ -167,7 +167,7 @@ app.post("/send", async (req, res) => {
 
     let mailOptions = {
         from: req.body.email,
-        to: "gamergramnetwork@gmail.com",
+        to: process.env.EMAIL,
         subject: 'Kontakt',
         text: req.body.text,
         html: output
@@ -193,8 +193,8 @@ app.post("/sendanswer", async (req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: "gamergramnetwork@gmail.com",
-            pass: "m0nkeyBanana1?",
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD,
         },
         tls: {
             rejectUnauthorized: false,
@@ -202,7 +202,7 @@ app.post("/sendanswer", async (req, res) => {
     });
 
     let mailOptions = {
-        from: "gamergramnetwork@gmail.com",
+        from: process.env.EMAIL,
         to: contact.email,
         subject: 'Kontakt',
         text: req.body.message,

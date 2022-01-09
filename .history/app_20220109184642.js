@@ -16,28 +16,20 @@ var News            = require("./models/news");
 var dashboard       = require("./routes/dashboard");
 var catchAsync      = require("./utils/catchAsync");
 
-mongoose
-  .connect(
-    "mongodb+srv://johnhardenberg:f5mlyg9XS8heCtcG@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
-    {
-      useNewUrlParser: true,
-      useCreateIndex: true,
-      useUnifiedTopology: true,
-      useFindAndModify: false,
-    }
-  )
-  .then(() => {
-    console.log("Connected to DB!");
-  })
-  .catch((err) => {
-    console.log("ERROR:", err.message);
-  });
-
-const path = require("path");
-require("dotenv").config({
-  path: path.resolve("config.env"),
+const { MongoClient } = require("mongodb");
+const uri =
+  "mongodb+srv://johnhardenberg:Lehecejo6!@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority";
+const client = new MongoClient(uri, {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+client.connect((err) => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
 });
 
+require("dotenv").config({ path: "./"});
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -76,9 +68,10 @@ app.use((req, res, next) => {
     next();
 });
 
-app.get("/", async (req, res) => {
+app.get("/", (req, res) => {
     try {
-        const news = await News.find({});
+        const news = News.find();
+        console.log(news));
         res.render("index", { news });
     } catch {
         res.render("index");
@@ -157,8 +150,8 @@ app.post("/send", async (req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: "gamergramnetwork@gmail.com",
-            pass: "m0nkeyBanana1?",
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD,
         },
         tls: {
             rejectUnauthorized: false,
@@ -167,7 +160,7 @@ app.post("/send", async (req, res) => {
 
     let mailOptions = {
         from: req.body.email,
-        to: "gamergramnetwork@gmail.com",
+        to: process.env.EMAIL,
         subject: 'Kontakt',
         text: req.body.text,
         html: output
@@ -193,8 +186,8 @@ app.post("/sendanswer", async (req, res) => {
         port: 465,
         secure: true,
         auth: {
-            user: "gamergramnetwork@gmail.com",
-            pass: "m0nkeyBanana1?",
+            user: process.env.EMAIL,
+            pass: process.env.PASSWORD,
         },
         tls: {
             rejectUnauthorized: false,
@@ -202,7 +195,7 @@ app.post("/sendanswer", async (req, res) => {
     });
 
     let mailOptions = {
-        from: "gamergramnetwork@gmail.com",
+        from: process.env.EMAIL,
         to: contact.email,
         subject: 'Kontakt',
         text: req.body.message,

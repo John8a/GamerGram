@@ -158,7 +158,7 @@ app.post("/send", async (req, res) => {
         secure: true,
         auth: {
             user: "gamergramnetwork@gmail.com",
-            pass: "m0nkeyBanana1?",
+            pass: process.env.PASSWORD,
         },
         tls: {
             rejectUnauthorized: false,
@@ -194,7 +194,7 @@ app.post("/sendanswer", async (req, res) => {
         secure: true,
         auth: {
             user: "gamergramnetwork@gmail.com",
-            pass: "m0nkeyBanana1?",
+            pass: process.env.PASSWORD,
         },
         tls: {
             rejectUnauthorized: false,
@@ -202,7 +202,7 @@ app.post("/sendanswer", async (req, res) => {
     });
 
     let mailOptions = {
-        from: "gamergramnetwork@gmail.com",
+        from: process.env.EMAIL,
         to: contact.email,
         subject: 'Kontakt',
         text: req.body.message,
