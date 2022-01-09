@@ -1,0 +1,75 @@
+<%- include('header') %>
+
+<section name="images">
+    <div class="head">
+        <h1>Bilder
+            <div class="right">
+                <p><%- photos.length %></p>
+            </div>
+        </h1>
+        <h4>Wir haben die Abstimmungen gezählt</h4>
+    </div>
+    <% if(logos.length > 0) { %>
+
+    <div class="container">
+        <table>
+            <tr class="header">
+                <th>Logo</th>
+                <th>URL</th>
+                <th></th>
+            </tr>
+            <% logos.forEach(function(logo) { %>
+            <tr>
+                <td><img src="/images/logo/<%- logo %>" alt=""></td>
+                <td><%- logo %></td>
+                <td></td>
+            </tr>
+            <% }); %>
+        </table>
+
+        <% } %>
+
+        <hr>
+
+        <table style="height: 350px">
+            <tr class="header">
+                <th>Bild</th>
+                <th>URL</th>
+                <th>Entfernen</th>
+            </tr>
+            <% photos.forEach(function(photo) { %>
+            <tr>
+                <td><img src="/images/team/<%- photo %>" alt=""></td>
+                <td><%- photo %></td>
+                <td>
+                    <form action="/dashboard/images" method="POST">
+                        <input type="text" hidden name="image" value="<%- photo %>">
+                        <button>X</button>
+                    </form>
+                </td>    
+            </tr>
+            <% }); %>
+        </table>
+    </div>
+
+    <div class="image-uploader">
+        <div class="container">
+            <h1>Was willst Du hochladen?</h1>
+            <i class="fas fa-times"></i>
+            <tab-container>
+                <input type="radio" id="logoTab" name="tabs" value="logo" checked>
+                <label for="logoTab" checked>Logo</label>
+                <input type="radio" id="teamTab" name="tabs" value="team">
+                <label for="teamTab">Team</label>
+                <tab-content>
+                    <form action="/dashboard/newlogo" method="post" enctype="multipart/form-data">
+                        
+                    </form>
+                </tab-content>
+                <tab-content>
+                    <p>TAB 02 content</p>
+                </tab-content>
+            </tab-container>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,35 @@
+<%- include('header') %>
+
+<section name="images">
+    <div class="head">
+            <h1>Bilder
+                <div class="right">
+                    <p><%- photos.length %></p>
+                    <a class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>
+                </div>
+            </h1>
+            <h4>Wir haben die Abstimmungen gezählt</h4>
+        </div>
+        <table>
+            <tr class="header">
+                <th>Datum</th>
+                <th>Nachricht</th>
+                <th>Ja/Nein</th>
+                <th>Entfernen</th>
+            </tr>
+            <% photos.forEach(function(poll) { %>
+            <tr>
+                <td><%- poll.date.getDate() %>.<%- poll.date.getMonth()+1 %>.<%- poll.date.getFullYear() %></td>
+                <td><%- poll.message %></td>
+                <td><%- poll.poll %></td>
+                <td>
+                    <form action="/poll/<%= poll._id %>?_method=DELETE" method="POST">
+                        <button>X</button>
+                    </form>
+                </td>    
+            </tr>
+            <% }); %>
+        </table>
+</section>

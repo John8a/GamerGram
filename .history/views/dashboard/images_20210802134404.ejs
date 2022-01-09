@@ -1,0 +1,30 @@
+<%- include('header') %>
+
+<section name="images">
+    <div class="head">
+            <h1>Bilder
+                <div class="right">
+                    <p><%- photos.length %></p>
+                </div>
+            </h1>
+            <h4>Wir haben die Abstimmungen gezählt</h4>
+        </div>
+        <table>
+            <tr class="header">
+                <th>Bild</th>
+                <th>URL</th>
+                <th>Entfernen</th>
+            </tr>
+            <% photos.forEach(function(photo) { %>
+            <tr>
+                <td><img src="/images/team/<%- photo %>" alt=""></td>
+                <td><%- photo %></td>
+                <td>
+                    <form action="/poll" method="POST">
+                        <button>X</button>
+                    </form>
+                </td>    
+            </tr>
+            <% }); %>
+        </table>
+</section>

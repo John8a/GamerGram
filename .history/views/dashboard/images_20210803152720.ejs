@@ -1,0 +1,135 @@
+<%- include('header') %>
+
+<section name="images">
+    <div class="head">
+        <h1>Bilder
+            <div class="right">
+                <p><%- photos.length %></p>
+            </div>
+        </h1>
+        <h4>Wir haben die Abstimmungen gezählt</h4>
+    </div>
+    <% if(logos.length > 0) { %>
+
+    <div class="container">
+        <table>
+            <tr class="header">
+                <th>Logo</th>
+                <th>URL</th>
+                <th></th>
+            </tr>
+            <% logos.forEach(function(logo) { %>
+            <tr>
+                <td><img src="/images/logo/<%- logo %>" alt=""></td>
+                <td><%- logo %></td>
+                <td></td>
+            </tr>
+            <% }); %>
+        </table>
+
+        <% } %>
+
+        <hr>
+
+        <table style="height: 350px">
+            <tr class="header">
+                <th>Bild</th>
+                <th>URL</th>
+                <th>Entfernen</th>
+            </tr>
+            <% photos.forEach(function(photo) { %>
+            <tr>
+                <td><img src="/images/team/<%- photo %>" alt=""></td>
+                <td><%- photo %></td>
+                <td>
+                    <form action="/dashboard/images" method="POST">
+                        <input type="text" hidden name="image" value="<%- photo %>">
+                        <button>X</button>
+                    </form>
+                </td>    
+            </tr>
+            <% }); %>
+        </table>
+    </div>
+
+    <div class="image-uploader">
+        <div class="container">
+            <h1>Was willst Du hochladen?</h1>
+            <i class="fas fa-times"></i>
+            <tab-container>
+                <input type="radio" id="logoTab" name="tabs" value="logo" checked>
+                <label for="logoTab" checked>Logo</label>
+                <input type="radio" id="teamTab" name="tabs" value="team">
+                <label for="teamTab">Team</label>
+                <tab-content>
+                    <form action="/dashboard/newlogo" method="post" class="image-upload" enctype="multipart/form-data" id="logoForm">
+                        <div class="container">
+                
+                            <input type="file" name="logo" accept="image/png" id="logo" onchange="setFile(this)">
+                            <label class="content" for="logo">
+                                <div class="images">
+                                    <img class="outgrayed left"
+                                        src="https://templin.de/assets/camaleon_cms/category-icon-4c9fed5df8c470aa67e7dff50831bc7d3e992f7ae70d64600f62e7b864d5bae0.png"
+                                        alt="">
+                                    <img class="activated"
+                                        src="https://templin.de/assets/camaleon_cms/category-icon-4c9fed5df8c470aa67e7dff50831bc7d3e992f7ae70d64600f62e7b864d5bae0.png"
+                                        alt="">
+                                    <img class="outgrayed right"
+                                        src="https://templin.de/assets/camaleon_cms/category-icon-4c9fed5df8c470aa67e7dff50831bc7d3e992f7ae70d64600f62e7b864d5bae0.png"
+                                        alt="">
+                                </div>
+                                <h3>Klicke hier oder nutze <span>Drag & Drop (noch nicht)</span></h3>
+                                <p>PNG</p>
+                            </label>
+                        
+                            <div class="uploadbar">
+                                <div class="info">
+                                    <h4>Enter um die Datei hochzuladen</h4>
+                                    <p id="file">Datei auswählen</p>
+                                </div>
+                                <div class="icon" onclick="document.getElementById('#logoForm').submit();">
+                                    <i class="fas fa-reply"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </tab-content>
+                <tab-content>
+                    <form action="/dashboard/newlogo" method="post" enctype="multipart/form-data" id="teamForm">
+                        <div class="container">
+                
+                            <input type="file" name="team" accept=".png, .jpg, .jpeg" id="team" onchange="setFile(this)">
+                            <label class="content" for="team">
+                                <div class="images">
+                                    <img class="outgrayed left"
+                                        src="https://templin.de/assets/camaleon_cms/category-icon-4c9fed5df8c470aa67e7dff50831bc7d3e992f7ae70d64600f62e7b864d5bae0.png"
+                                        alt="">
+                                    <img class="activated"
+                                        src="https://templin.de/assets/camaleon_cms/category-icon-4c9fed5df8c470aa67e7dff50831bc7d3e992f7ae70d64600f62e7b864d5bae0.png"
+                                        alt="">
+                                    <img class="outgrayed right"
+                                        src="https://templin.de/assets/camaleon_cms/category-icon-4c9fed5df8c470aa67e7dff50831bc7d3e992f7ae70d64600f62e7b864d5bae0.png"
+                                        alt="">
+                                </div>
+                                <h3>Klicke hier oder nutze <span>Drag & Drop (noch nicht)</span></h3>
+                                <p>JPG, JPEG, PNG</p>
+                            </label>
+                        
+                            <div class="uploadbar">
+                                <div class="info">
+                                    <h4>Enter um die Datei hochzuladen</h4>
+                                    <p id="file2">Datei auswählen</p>
+                                </div>
+                                <div class="icon" onclick="document.getElementById('#teamForm').submit();">
+                                    <i class="fas fa-reply"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </tab-content>
+            </tab-container>
+        </div>
+    </div>
+
+    <script src="/scripts/image.js"></script>
+</section>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="shortcut icon" href="/images/favicon-256x256.png" type="image/x-icon">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100;200;300;400;600;800;900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/stylesheets/dashboard.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="/">Gamergram</a>
+        </div>
+        <div class="nav-links">
+            <a href="/dashboard"><img src="/images/navbar/Settings.svg" alt="">Dashboard</a>
+            <a href="/dashboard/contact"><img src="/images/navbar/E-Mail.svg" alt="">Kontaktanfragen</a>
+            <a href="/dashboard/abo"><img src="/images/navbar/Abo.svg" alt="">Abonnements</a>
+            <a href="/dashboard/poll"><img src="/images/navbar/Poll.svg" alt="">Polls</a>
+            <a href="/dashboard/news"><img src="/images/navbar/News.svg" alt="">News</a>
+            <a href="/dashboard/news"><img src="/images/navbar/Bild.svg" alt="">Bilder</a>
+        </div>
+        <div class="profile">
+            <a href="/dashboard/<%- currentUser._id %>" class="user">
+            <% if(currentUser.image != null) { %>
+                <img src="/images/team/<%- currentUser.image %>" alt="">
+            <% } else { %>
+                <img src="https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1000&q=80" alt="">
+            <% } %>
+            </a>
+            <div class="name" onclick="window.location.href='/dashboard/<%- currentUser._id %>'">
+                <h4><%- currentUser.name || currentUser.username %></h4>
+                <p><%- currentUser.email %></p>
+            </div>
+            <a href="/logout" class="logout">
+                <img src="/images/Logout.svg" alt="">
+            </a>
+        </div>
+    </header>

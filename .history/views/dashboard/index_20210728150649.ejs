@@ -1,0 +1,90 @@
+<%- include('header') %>
+
+    <section name="summit">
+        <div class="head">
+            <h1>Dashboard</h1>
+            <h4>Alles auf einen Blick!</h4>
+        </div>
+        <div class="cards">
+            <div class="card polls">
+                <div class="head">
+                    <h2>Abstimmung</h2>
+                    <div class="download">
+                        <a href="/outputs/poll.xlsx" download class="download">
+                            <img src="/images/Download.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="graph">
+                    <svg></svg>
+                    <p><%- polls.length %></p>
+                </div>
+                <div class="show-stats">
+                    <a href="/dashboard/poll">Gehe zu Polls</a>
+                </div>
+            </div>
+            <div class="card abonements">
+                <div class="head">
+                    <h2>Abonennten</h2>
+                    <div class="download">
+                        <a href="/outputs/abonnements.xlsx" download class="download">
+                            <img src="/images/Download.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="graph">
+                    <canvas id="abos"></canvas>
+                    <p><%- emails.length %></p>
+                </div>
+                <div class="show-stats">
+                    <a href="/dashboard/abos">Gehe zu Abonnenten</a>
+                </div>
+            </div>
+            <div class="card contacts">
+                <div class="head">
+                    <h2>Kontaktanfragen</h2>
+                    <div class="download">
+                        <a href="/outputs/contact.xlsx" download class="download">
+                            <img src="/images/Download.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="graph">
+                    <svg></svg>
+                    <p><%- contacts.length %></p>
+                </div>
+                <div class="show-stats">
+                    <a href="/dashboard/poll">Gehe zu Kontakten</a>
+                </div>
+            </div>
+            <div class="card contacts">
+                <div class="head">
+                    <h2>News</h2>
+                    <div class="download">
+                        <a href="/dashboard/news#addForm" class="download">
+                            <img src="/images/Add.svg" alt="">
+                        </a>
+                    </div>
+                </div>
+                <div class="graph">
+                    <svg></svg>
+                    <p><%- news.length %></p>
+                </div>
+                <div class="show-stats">
+                    <a href="/dashboard/news">Gehe zu News</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</body>
+
+<script>
+    var mailChart = document.getElementById("abos").getContext("2d");
+
+    var ringChart = new Chart(mailChart, {
+        type: 'doughnut',
+        data: {
+            datasets: contacts.length
+        }
+    });
+</script>

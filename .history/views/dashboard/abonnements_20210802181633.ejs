@@ -1,0 +1,39 @@
+<%- include('header') %>
+    <section name="abonements">
+        <div class="head">
+            <h1>Abonennten
+                <div class="right">
+                    <p><%- emails.length %></p>
+                    <a href="/outputs/abonnements.xlsx" download class="download">
+                        <img src="/images/Download.svg" alt="">
+                    </a>    
+                </div>
+            </h1>
+            <h4>Jeder, der Early-Access haben möchte</h4>
+        </div>
+        <div class="container">
+            <table>
+                <tr class="header">
+                    <th>Datum</th>
+                    <th>E-Mail-Adresse</th>
+                    <th>Entfernen</th>
+                </tr>
+                <% emails.forEach(function(email) { %>
+                <tr>
+                    <td><%- email.date.getDate() %>.<%- email.date.getMonth()+1 %>.<%-email.date.getFullYear() %></td>
+                    <td><%- email.email %></td>
+                    <td>
+                        <form action="/abo/<%= email._id %>?_method=DELETE" method="POST">
+                            <button>X</button>
+                        </form>
+                    </td>    
+                </tr>
+                <% }); %>
+            </table>
+        </div>
+    </section>
+
+</body>
+<footer>
+    <script src="/scripts/tableDrag.js"></script>
+</footer>
