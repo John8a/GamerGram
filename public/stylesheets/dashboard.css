@@ -13,6 +13,10 @@
           box-sizing: border-box;
 }
 
+body {
+  overflow: hidden;
+}
+
 .inner-container {
   position: relative;
   height: 465px;
@@ -51,6 +55,16 @@ header {
   width: 300px;
   position: relative;
   border-right: 1px solid #dddddd;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
 }
 
 header .logo {
@@ -70,8 +84,6 @@ header .nav-links {
   height: -webkit-fit-content;
   height: -moz-fit-content;
   height: fit-content;
-  -webkit-transform: translateY(50%);
-          transform: translateY(50%);
 }
 
 header .nav-links a {
@@ -108,8 +120,6 @@ header .nav-links a:hover img {
 header .profile {
   border-top: 1px solid #ddd;
   padding: 10px 0;
-  position: absolute;
-  bottom: 0;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -184,6 +194,7 @@ body {
 
 section {
   width: calc(100% - 200px);
+  height: calc(100% - 200px);
   padding: 100px;
 }
 
@@ -272,145 +283,6 @@ section .head h4 {
   font-weight: 300;
   font-size: 20px;
   padding: 0px 20px;
-}
-
-section .dashboard {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  position: relative;
-}
-
-section .dashboard .divider {
-  position: absolute;
-  width: 100%;
-  display: block;
-  border: 0;
-  border-bottom: 1px solid #f1f1f1;
-}
-
-section .dashboard .information {
-  width: 30%;
-  padding: 0px 20px;
-  margin-top: 25px;
-}
-
-section .dashboard .information p {
-  margin-top: 5px;
-  font-size: 14px;
-  letter-spacing: 0.02em;
-}
-
-section .dashboard form {
-  padding: 0 30px;
-  margin-left: 5%;
-  width: 65%;
-  margin-top: 25px;
-}
-
-section .dashboard form .user-input {
-  width: 50%;
-  margin: 20px 0;
-}
-
-section .dashboard form .user-input.image .upload {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-}
-
-section .dashboard form .user-input.image .upload .input {
-  width: calc(100% - 150px);
-  position: relative;
-}
-
-section .dashboard form .user-input.image .upload .input input {
-  width: 100%;
-  position: absolute;
-}
-
-section .dashboard form .user-input.image .upload .input i {
-  position: absolute;
-  right: 10px;
-  top: 17px;
-  color: red;
-  display: none;
-  cursor: pointer;
-}
-
-section .dashboard form .user-input.image .upload .image-upload {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  border-radius: 5px;
-  width: 150px;
-  height: 100%;
-  margin-top: 5px;
-  border: 1px dashed #b1b1b1;
-  cursor: pointer;
-}
-
-section .dashboard form .user-input.image .upload .image-upload p {
-  font-size: 8px;
-  margin-left: 5px;
-  color: #8b8b8b;
-}
-
-section .dashboard form .user-input.image .upload .image-upload img {
-  -webkit-filter: brightness(0);
-          filter: brightness(0);
-  opacity: 0.4;
-  width: 39px;
-}
-
-section .dashboard form .user-input.image .upload .image-upload:hover {
-  background-color: #B474E725;
-  border-color: #B474E7;
-}
-
-section .dashboard form .user-input.image .upload .image-upload:hover img {
-  -webkit-filter: brightness(1);
-          filter: brightness(1);
-  opacity: 1;
-}
-
-section .dashboard form .user-input.image .upload .image-upload:hover p {
-  color: #000;
-}
-
-section .dashboard form .user-input:first-child {
-  margin: 0;
-}
-
-section .dashboard form .user-input label {
-  font-size: 12px;
-  font-weight: 700;
-}
-
-section .dashboard form .user-input input {
-  outline: none;
-  margin-top: 5px;
-  border: 1px solid #b1b1b1;
-  padding: 10px 5px;
-  font-size: 16px;
-  width: 100%;
-  border-radius: 5px;
-  font-family: 'Montserrat';
-}
-
-section .dashboard form button {
-  margin-top: 20px;
-  border: 0;
-  padding: 10px;
-  color: #fff;
-  background-image: var(--primary-background);
-  font-family: 'Montserrat';
 }
 
 section[name="summit"] .head h4 {
@@ -829,5 +701,416 @@ section[name="news"] .cards .card .buttons input.del {
   font-family: 'Montserrat';
   outline: none;
   cursor: pointer;
+}
+
+section[name="user"] .dashboard {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  position: relative;
+}
+
+section[name="user"] .dashboard .divider {
+  position: absolute;
+  width: 100%;
+  display: block;
+  border: 0;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+section[name="user"] .dashboard .information {
+  width: 30%;
+  padding: 0px 20px;
+  margin-top: 25px;
+}
+
+section[name="user"] .dashboard .information p {
+  margin-top: 5px;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+}
+
+section[name="user"] .dashboard form {
+  padding: 0 30px;
+  margin-left: 5%;
+  width: 85%;
+  max-height: 420px;
+  margin-top: 15px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: start;
+}
+
+section[name="user"] .dashboard form .user-input {
+  width: 48%;
+  margin: 10px 0;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload .input {
+  width: calc(100% - 150px);
+  position: relative;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload .input input {
+  width: 100%;
+  position: absolute;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload .input i {
+  position: absolute;
+  right: 10px;
+  top: 17px;
+  color: red;
+  display: none;
+  cursor: pointer;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload .image-upload {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  border-radius: 5px;
+  width: 150px;
+  height: 100%;
+  margin-top: 5px;
+  border: 1px dashed #b1b1b1;
+  cursor: pointer;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload .image-upload p {
+  font-size: 8px;
+  margin-left: 5px;
+  color: #8b8b8b;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload .image-upload img {
+  -webkit-filter: brightness(0);
+          filter: brightness(0);
+  opacity: 0.4;
+  width: 39px;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload .image-upload:hover {
+  background-color: #B474E725;
+  border-color: #B474E7;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload .image-upload:hover img {
+  -webkit-filter: brightness(1);
+          filter: brightness(1);
+  opacity: 1;
+}
+
+section[name="user"] .dashboard form .user-input.image .upload .image-upload:hover p {
+  color: #000;
+}
+
+section[name="user"] .dashboard form .user-input label {
+  font-size: 12px;
+  font-weight: 700;
+}
+
+section[name="user"] .dashboard form .user-input input {
+  outline: none;
+  margin-top: 5px;
+  border: 1px solid #b1b1b1;
+  padding: 10px 5px;
+  font-size: 16px;
+  width: 100%;
+  border-radius: 5px;
+  font-family: 'Montserrat';
+}
+
+section[name="user"] .dashboard form button {
+  margin-top: 34px;
+  border: 0;
+  width: 48%;
+  padding: 12px;
+  color: #fff;
+  background-image: var(--primary-background);
+  font-family: 'Montserrat';
+}
+
+section[name="images"] .container {
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+section[name="images"] table {
+  width: 100%;
+  margin: 20px;
+}
+
+section[name="images"] table tr th {
+  text-align: left;
+  width: 25%;
+}
+
+section[name="images"] table tr th:nth-child(2) {
+  width: 50%;
+}
+
+section[name="images"] table tr td img {
+  width: 100px;
+  height: 100px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+section[name="images"] .image-uploader {
+  background-color: rgba(0, 0, 0, 0.5);
+  position: absolute;
+  width: 85.2%;
+  height: 100%;
+  right: 0;
+  top: 0;
+  padding: 100px;
+  display: none;
+}
+
+section[name="images"] .image-uploader .container {
+  background-color: #fff;
+  padding: 50px;
+  border-radius: 20px;
+  position: relative;
+}
+
+section[name="images"] .image-uploader .container i {
+  position: absolute;
+  right: 50px;
+  top: 50px;
+  font-size: 20px;
+  color: #EF4AB7;
+}
+
+section[name="images"] .image-uploader #logoTab,
+section[name="images"] .image-uploader #teamTab {
+  display: none;
+}
+
+section[name="images"] .image-uploader tab-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+section[name="images"] .image-uploader tab-container .container {
+  width: 70%;
+  margin: 0 auto;
+  border-radius: 25px;
+  padding: 30px 20px;
+  position: relative;
+  overflow: auto;
+}
+
+section[name="images"] .image-uploader tab-container .container:hover {
+  background-color: rgba(180, 116, 231, 0.2);
+}
+
+section[name="images"] .image-uploader tab-container .container input {
+  position: absolute;
+  visibility: hidden;
+}
+
+section[name="images"] .image-uploader tab-container .container label.content {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 650px;
+  height: 250px;
+  border: 4px dashed rgba(0, 0, 0, 0.4);
+  border-radius: 25px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+section[name="images"] .image-uploader tab-container .container label.content img {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  -webkit-filter: invert(0.7) brightness(0.2);
+          filter: invert(0.7) brightness(0.2);
+}
+
+section[name="images"] .image-uploader tab-container .container label.content img:nth-child(2) {
+  z-index: 10 !important;
+}
+
+section[name="images"] .image-uploader tab-container .container label.content img.outgrayed {
+  -webkit-filter: grayscale(100%);
+          filter: grayscale(100%);
+  opacity: 0.2;
+}
+
+section[name="images"] .image-uploader tab-container .container label.content img.outgrayed.left {
+  -webkit-transform: translate(100%, 0) scale(0.8);
+          transform: translate(100%, 0) scale(0.8);
+}
+
+section[name="images"] .image-uploader tab-container .container label.content img.outgrayed.right {
+  -webkit-transform: translate(-100%, 0) scale(0.8);
+          transform: translate(-100%, 0) scale(0.8);
+}
+
+section[name="images"] .image-uploader tab-container .container .uploadbar {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  padding: 20px;
+}
+
+section[name="images"] .image-uploader tab-container .container .uploadbar .info h4 {
+  font-size: 18px;
+}
+
+section[name="images"] .image-uploader tab-container .container .uploadbar .info p {
+  font-size: 20px;
+}
+
+section[name="images"] .image-uploader tab-container .container .uploadbar .icon {
+  width: 30px;
+  height: 30px;
+  background-color: #EF4AB7;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  color: #878ea7;
+  border-radius: 15px;
+  cursor: pointer;
+  position: unset;
+}
+
+section[name="images"] .image-uploader tab-container .container .uploadbar .icon i {
+  position: unset;
+  color: #fff;
+  font-size: 15px;
+}
+
+section[name="images"] .image-uploader tab-container .image-upload:hover label img.outgrayed.left {
+  -webkit-animation: 0.2s left-move linear forwards;
+          animation: 0.2s left-move linear forwards;
+}
+
+section[name="images"] .image-uploader tab-container .image-upload:hover label img.outgrayed.right {
+  -webkit-animation: 0.2s right-move linear forwards;
+          animation: 0.2s right-move linear forwards;
+}
+
+section[name="images"] .image-uploader label {
+  -ms-grid-column-align: center;
+      justify-self: center;
+  padding: 10px 20px;
+  margin: 10px 5px;
+  border: 0.5px solid rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  cursor: pointer;
+}
+
+section[name="images"] .image-uploader tab-content {
+  width: 100%;
+}
+
+section[name="images"] .image-uploader input#logoTab:checked ~ tab-content:not(:nth-of-type(1)),
+section[name="images"] .image-uploader input#teamTab:checked ~ tab-content:not(:nth-of-type(2)) {
+  display: none;
+}
+
+section[name="images"] .image-uploader input#logoTab:checked ~ label:nth-of-type(1) {
+  border-color: #EF4AB7;
+}
+
+section[name="images"] .image-uploader input#teamTab:checked ~ label:nth-of-type(2) {
+  border-color: #EF4AB7;
+}
+
+@-webkit-keyframes left-move {
+  from {
+    -webkit-transform: translate(100%, 0) scale(0.8);
+            transform: translate(100%, 0) scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(0.8) rotate(-20deg);
+            transform: scale(0.8) rotate(-20deg);
+  }
+}
+
+@keyframes left-move {
+  from {
+    -webkit-transform: translate(100%, 0) scale(0.8);
+            transform: translate(100%, 0) scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(0.8) rotate(-20deg);
+            transform: scale(0.8) rotate(-20deg);
+  }
+}
+
+@-webkit-keyframes right-move {
+  from {
+    -webkit-transform: translate(-100%, 0) scale(0.8);
+            transform: translate(-100%, 0) scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(0.8) rotate(20deg);
+            transform: scale(0.8) rotate(20deg);
+  }
+}
+
+@keyframes right-move {
+  from {
+    -webkit-transform: translate(-100%, 0) scale(0.8);
+            transform: translate(-100%, 0) scale(0.8);
+  }
+  to {
+    -webkit-transform: scale(0.8) rotate(20deg);
+            transform: scale(0.8) rotate(20deg);
+  }
 }
 /*# sourceMappingURL=dashboard.css.map */

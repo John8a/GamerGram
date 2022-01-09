@@ -30,7 +30,7 @@
                 </div>
                 <div class="row">
                     <button onclick="window.location='/datenschutz'" class="datenschutz">Datenschutzerklärung</button>
-                    <button class="save-selection">Akzeptieren</button>
+                    <button onclick="setCookie('cookie', 'true', 'true')" class="save-selection">Akzeptieren</button>
                 </div>
             </div>
         </div>
@@ -55,12 +55,12 @@
 
   gtag('config', 'G-P9R12Y0G8C');
 </script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<script src="/scripts/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
 <script src="/scripts/cookies.js"></script>
 <script>
     if(!answeredCookie) {
         $(window).on("load", function () {
-            checkCookie("cookie");
+            checkCookie("cookie", "true", "true");        
         });
     }
 </script>

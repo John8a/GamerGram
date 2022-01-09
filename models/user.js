@@ -14,6 +14,10 @@ const userSchema = new Schema({
         type: String,
         required: true
     },
+    position: {
+        type: String,
+        default: "Marketing"
+    }
 });
 
 userSchema.plugin(passportLocalMongoose);

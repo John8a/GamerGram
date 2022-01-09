@@ -1,33 +1,27 @@
 const pollForm = document.querySelector("form.poll");
 const inputField = document.querySelector('.input-field');
 const flashMessage = document.querySelector(".flash-message");
+var answeredCookie = "";
 
 window.onload = function() {
     answeredCookie = getCookie("polled");
-    if (answeredCookie == "true") {
+    if (answeredCookie == "yes" || answeredCookie == "no") {
         document.querySelector(".poll p").innerHTML = "";
-        document.querySelector(".poll-panel").innerHTML = "";
+        let polls = document.querySelector(".poll-panel").children
+        for (var i = 0; i < polls.length; i++) {
+            polls[i].removeAttribute("onclick");
+            polls[i].readOnly = true;
+        }
+
+        togglePoll();
+
         showFlashMessage("");
     }
 };
 
-// getsCookie Name
-function getCookie(cname) {
-    var name = cname + "=";
-    var decodedCookie = decodeURIComponent(document.cookie);
-    var ca = decodedCookie.split(';');
-    for(var i = 0; i <ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') {
-            c = c.substring(1);
-        }
-
-        if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-        }
-    }
-
-    return "";
+function togglePoll() {
+    oppositeAnswer = answeredCookie == "yes" ? "no" : "yes";
+    document.querySelector("#" + oppositeAnswer).parentElement.style.filter = "grayscale(100%)";
 }
 
 function openField() {
@@ -58,19 +52,11 @@ function submitForm(event, poll_val) {
                 openField();
             }
             showFlashMessage("Danke für Deine Hilfe! Wir danken Dir für Dein Feedback!");
-            setCookies("polled", true);
+            setCookie("polled", poll_val, 365);
         },
         error: function (request, status, error) {
             serviceError();
         }
     });
 
-}
-
-function setCookies(cookieName, bool) {
-    var d = new Date();
-    d.setTime(d.getTime() + (365 * 24 * 60 * 60 * 1000));
-    var expires = "expires=" +d.toUTCString();
-    
-    document.cookie = cookieName + "=" + bool + ";" + expires;
 }

@@ -1,13 +1,31 @@
-var cookieRequest = document.querySelector(".save-selection");
-
 var answeredCookie;
-var defaultCookie = false;
+var defaultCookie   = false;
 
-// Wenn Akzeptiert wird, wird checkCookie ausgeführt
-cookieRequest.addEventListener("click", function() {
-    defaultCookie = true;
-    checkCookie("cookie");
-});
+toggleCookie = function() {
+    $("section[name='cookies']").removeClass("fade-up");
+    $("section[name='cookies']").attr("style", "");
+    $("section[name='cookies']").addClass("fade-out");
+}
+
+// function toggleMode() {
+//     try {
+//         var osmode = getCookie("osmode");
+//     } catch (error) {
+//         osmode = "light";
+//     }
+//     const root = document.querySelector(":root").style;
+//     if (osmode == "light") {
+//         root.setProperty("--white-", "#000");
+//         root.setProperty("--black-", "#fff");
+//         root.setProperty("--grey-background", "#1a1a1a");
+//         setCookie("osname", "light", 14);
+//     } else {
+//         root.setProperty("--white-", "#fff");
+//         root.setProperty("--black-", "#000");
+//         root.setProperty("--grey-background", "#f5f5f5");
+//         setCookie("osname", "light", 14);
+//     }
+// }
 
 // getsCookie Name
 function getCookie(cname) {
@@ -29,28 +47,22 @@ function getCookie(cname) {
 }
 
 // checked, ob der Cookie schon gesetzt ist
-function checkCookie(name) {
+function checkCookie(name, expectedAnswer) {
     answeredCookie = getCookie(name);
-    if (answeredCookie == "true") {
-        $("section[name='cookies']").removeClass("fade-up");
+    if (answeredCookie == expectedAnswer) {
+      $("section[name='cookies']").removeClass("fade-up");
     } else {
-        $("section[name='cookies']").addClass("fade-up");
-        if (window.location.href.substring(window.location.href.lastIndexOf('/') + 1) == "datenschutz") {
-            $(".fade-up").css("animation", "none").css("bottom", "40px");
-        }
-    }
-
-    // document.querySelector("section[name='cookies']").style = null;
-    answeredCookie = defaultCookie;
-    if (answeredCookie != "" && answeredCookie != null) {
-        setCookie("cookie", answeredCookie, 365);
-        $("section[name='cookies']").removeClass("fade-up");
-        $("section[name='cookies']").attr("style", "");
-        $("section[name='cookies']").addClass("fade-out");
+      $("section[name='cookies']").addClass("fade-up");
+      if (window.location.href.substring(window.location.href.lastIndexOf("/") + 1) == "datenschutz") {
+        $(".fade-up").css("animation", "none").css("bottom", "40px");
+      }
     }
 }
 
 function setCookie(cname, cvalue, exdays) {
+    if (cname === "cookie") {
+        toggleCookie();
+    }
     var d = new Date();
     d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
     var expires = "expires=" +d.toUTCString();

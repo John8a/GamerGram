@@ -83,6 +83,7 @@
     text-decoration: none;
   }
   .mobile-navbar .nav-links .link img {
+    max-width: 70px;
     height: 30px;
     -webkit-filter: brightness(0);
             filter: brightness(0);

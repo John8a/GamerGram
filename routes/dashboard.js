@@ -1,6 +1,7 @@
 const express = require("express");
-const router  = express.Router(),
-      multer  = require("multer");
+const router = express.Router(),
+      fs = require("fs"),
+      multer = require("multer");
 
 var Abonnements = require("../models/abonnements");
 var Poll = require("../models/poll");
@@ -9,15 +10,29 @@ var User = require("../models/user");
 var News = require("../models/news");
 var exportData = require("./exportExcelData");
 
+var photos = fs.readdirSync("public/images/team");
+var logo = fs.readdirSync("public/images/logo");
+
 var storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, "public/images/team/");
+      },
+      filename: function(req, file, cb) {
+        cb(null, req.body.image);
+        photos.push(req.body.image);
+    }
+});
+
+var logoStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "public/images/logo/");
     },
     filename: function(req, file, cb) {
-        cb(null, req.body.image);
+        cb(null, "gamergram.png");
     }
 });
 var upload = multer({ storage: storage });
+var logoUpload = multer({ storage: logoStorage });
 
 router.get("/dashboard", isLoggedIn, async (req, res) => {
   const emails = await Abonnements.find();
@@ -25,6 +40,35 @@ router.get("/dashboard", isLoggedIn, async (req, res) => {
   const contacts = await Contact.find();
   const news = await News.find();
   res.render("dashboard/index", { emails, polls, contacts, news });
+});
+
+router.get("/dashboard/images", isLoggedIn, async (req, res) => {
+  if (photos[0] == ".DS_Store") {
+    photos.shift();
+  }
+  if (logo[0] == ".DS_Store") {
+    logo.shift();
+  }
+  
+  res.render("dashboard/images", { photos, logos : logo })
+});
+
+router.post("/dashboard/images",  async (req, res) => {
+    const { image } = req.body;
+    const index = photos.indexOf(image);
+
+    if (index < 0) {
+      return res.redirect("/dashboard/photos");
+    }
+
+    fs.unlink("public/images/team/" + image, (err) => {
+      err ? console.log(err) : res.redirect("/dashboard/images");
+    });
+    photos.splice(index, 1);
+});
+
+router.post("/dashboard/newlogo", isLoggedIn, logoUpload.single("newLogo"), async (req, res) => {
+  res.redirect("dashboard/images")
 });
 
 router.get("/dashboard/contact", isLoggedIn, async (req, res) => {
@@ -73,11 +117,10 @@ router.delete("/poll/:id", isLoggedIn, async (req, res) => {
 router.post("/dashboard/news", isLoggedIn, async (req, res) => {
   const newArticle = new News(req.body);
   await newArticle.save();
-  console.log(newArticle);
   res.redirect("/");
 });
 
-router.put("/dashboard/news/:id", async (req, res) => {
+router.put("/dashboard/news/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   const article = await News.findByIdAndUpdate(id, { ...req.body });
   console.log(article);
@@ -93,19 +136,13 @@ router.delete("/dashboard/news/:id", isLoggedIn, async (req, res) => {
 router.get("/dashboard/:id", isLoggedIn, async (req, res) => {
   const { id } = req.params;
   const user = await User.findById(id).sort({ date: -1 });
-  res.render("dashboard/user", { user });
+  res.render("dashboard/user", { user, photos });
 });
 
-router.put(
-  "/dashboard/:id",
-  isLoggedIn,
-  upload.single("uploadImage"),
-  async (req, res) => {
+router.put("/dashboard/:id", isLoggedIn, upload.single("uploadImage"), async (req, res) => {
     try {
       const { id } = req.params;
-      console.log(req.body);
       const user = await User.findByIdAndUpdate(id, { ...req.body });
-      console.log(user);
       res.redirect("back");
     } catch {
       console.log("Fehler!");
@@ -113,7 +150,6 @@ router.put(
     }
   }
 );
-
 
 // MIDDLEWARE
 

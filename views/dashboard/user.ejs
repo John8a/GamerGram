@@ -27,13 +27,23 @@
                 <label for="">E-Mail</label>
                 <input type="text" name="email" value="<%- user.email %>">
             </div>
+            <div class="user-input">
+                <label for="">Position</label>
+                <input type="text" name="position" value="<%- user.position %>">
+            </div>
             <div class="user-input image">
                 <label for="">Bild URL</label>
                 <div class="upload">
                     <div class="input">
-                        <input type="text" name="image" value="<%- user.image %>" placeholder="Bild">
+                        <input list="images" type="text" name="image" value="<%- user.image %>" placeholder="Bild">
                         <i class="fas fa-times" onclick="cleanInput();"></i>
                     </div>
+                    <datalist id="images">
+                        <% photos.forEach(function(photo) { %>
+                            <option>Test</option>
+                            <option value="<%- photo %>"><%- photo %></option>
+                        <% }); %>
+                    </datalist>
                     <input type="file" name="uploadImage" value="/images/team/" id="image-upload" onchange="imageUpload();" hidden>
                     <label class="image-upload" for="image-upload">
                         <img src="/images/Bild.svg" alt="">

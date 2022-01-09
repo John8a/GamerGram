@@ -1,12 +1,12 @@
 var express         = require("express"),
-    app             = express(),
-    mongoose        = require("mongoose"),
-    methodOverride  = require("method-override"),
-    session         = require('express-session'),
-    expressSanitizer= require("express-sanitizer"),
-    passport		= require("passport"),
-	LocalStrategy	= require("passport-local"),
-    nodemailer      = require("nodemailer");
+  app               = express(),
+  mongoose          = require("mongoose"),
+  methodOverride    = require("method-override"),
+  session           = require("express-session"),
+  expressSanitizer  = require("express-sanitizer"),
+  passport          = require("passport"),
+  LocalStrategy     = require("passport-local"),
+  nodemailer        = require("nodemailer");
     
 var Abonnements     = require("./models/abonnements");
 var Poll            = require("./models/poll");
@@ -17,16 +17,22 @@ var dashboard       = require("./routes/dashboard");
 var catchAsync      = require("./utils/catchAsync");
 
 
-mongoose.connect('mongodb+srv://johnhardenberg:Lehecejo6!@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority', {
-	useNewUrlParser: true,
-	useCreateIndex: true,
-	useUnifiedTopology: true,
-    useFindAndModify: false
-}).then(() => {
-	console.log('Connected to DB!');
-}).catch(err => {
-	console.log('ERROR:', err.message);
-});
+mongoose
+  .connect(
+    'mongodb+srv://' + process.env.MONGONAME + ':' + process.env.MONGOPASS + '@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
+      useFindAndModify: false,
+    }
+  )
+  .then(() => {
+    console.log("Connected to DB!");
+  })
+  .catch((err) => {
+    console.log("ERROR:", err.message);
+  });
 
 const options = {
     autoIndex: false, // Don't build indexes
@@ -40,7 +46,7 @@ const connectWithRetry = () => {
   console.log('MongoDB connection with retry')
   mongoose
     .connect(
-      "mongodb+srv://johnhardenberg:Lehecejo6!@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
+      "mongodb+srv://" + process.env.MONGONAME + ":" + process.env.MONGOPASS + "@cluster0.jhpnt.mongodb.net/myFirstDatabase?retryWrites=true&w=majority",
       options
     )
     .then(() => {
@@ -109,7 +115,6 @@ app.get("/datenschutz", (req, res) => {
 });
 
 app.post("/poll", async (req, res) => {
-    // const message = "Danke für Deine Hilfe!"
     const newPoll = new Poll(req.body);
     await newPoll.save();
     console.log(newPoll);

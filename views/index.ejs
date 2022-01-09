@@ -2,13 +2,13 @@
 <body>
     <header>
         <div class="logo">
-            <a href="/">Gamergram</a>
+            <a href="/">Gamergrid</a>
         </div>
         <div class="nav-links">
             <a href="#hero">Abstimmung</a>
-            <a href="#features">Features</a>
-            <a href="#news">News</a>
-            <a href="#abo">Schreib Dich ein!</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('features').scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });">Features</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('news').scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });">News</a>
+            <a href="javascript:void(0)" onclick="document.getElementById('abo').scrollIntoView({ behavior: 'auto', block: 'center', inline: 'center' });">Schreib Dich ein!</a>
             <a href="#contact" class="contact-btn">Kontakt!</a>
         </div>
 
@@ -74,7 +74,7 @@
         </div>
     </section>
     <section name="intro-video">
-        <iframe width="100%" height="1080" src="https://www.youtube.com/embed/Ml_xeZ43nQo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <iframe loading="lazy" width="100%" height="1080" src="https://www.youtube.com/embed/Ml_xeZ43nQo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </section>
     <section class="small" name="features" id="features">
         <div class="head">
@@ -135,7 +135,7 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
             <div class="cards">
                 <% news.forEach(function(article) { %>
                 <div class="card <%- article.theme %>">
-                    <img src="<%- article.image %>" alt="">
+                    <img loading="lazy" src="<%- article.image %>" alt="">
                     <div class="card-description">
                         <h2><%- article.title %></h2>
                         <p><%- article.text.substring(0, 100) %>...</p>
@@ -157,21 +157,21 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
             <h4>Du möchtest mehr Informationen, oder sogar dabei helfen dieses Projekt mitzugestalten? Dann schreibe uns mit Deinem Anliegen und wir werden uns schnellst möglich darum kümmern! </h4>
             <div class="media-links">
                 <div class="social-media">
-                    <a href="" class="information">
+                    <a href="https://www.instagram.com/Gamergrid.network/" class="information">
                         <i class="fab fa-instagram"></i>
-                        <p>@gamergram</p>
+                        <p>@Gamergrid</p>
                     </a>
                 </div>
                 <div class="social-media">
                     <a href="" class="information">
                         <i class="fab fa-twitter"></i>
-                        <p>@gamergram_de</p>
+                        <p>@Gamergrid_de</p>
                     </a>
                 </div>
                 <div class="social-media">
                     <a href="" class="information">
                         <i class="fab fa-linkedin"></i>
-                        <p>GAMERGRAM</p>
+                        <p>GAMERGRID</p>
                     </a>
                 </div>
                 <div class="social-media">
@@ -188,14 +188,14 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
                     <label for="name">Dein Name</label>
                     <div class="input">
                         <input type="text" name="name" onfocus="outline(this)" onblur="outline(this)">
-                        <img src="/images/Name Icon.svg">
+                        <img loading="lazy" src="/images/Name Icon.svg">
                     </div>
                 </div>
                 <div class="input-field">
                     <label for="email">Deine E-Mail</label>
                     <div class="input">
                         <input type="email" name="email" onfocus="outline(this)" onblur="outline(this)">
-                        <img src="/images/Email.svg">
+                        <img loading="lazy" src="/images/Email.svg">
                     </div>
                 </div>
                 <div class="input-field">
