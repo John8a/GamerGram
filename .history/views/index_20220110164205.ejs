@@ -143,7 +143,7 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
                     </div>
                     <div class="card-description full">
                         <h2><%- article.title %></h2>
-                        <p><%- article.text %></p>
+                        <p><%- article.text.substring(0, 100) %>...</p>
                         <a href="javascript:void()" onclick="fullText(this);">Zurück »</a>
                     </div>
                 </div>
@@ -172,12 +172,6 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
                     <a href="" class="information">
                         <i class="fab fa-tiktok"></i>
                         <p>GamerGrid</p>
-                    </a>
-                </div>
-                <div class="social-media">
-                    <a href="" class="information">
-                        <i class="fab fa-youtube"></i>
-                        <p>YouTube</p>
                     </a>
                 </div>
                 <div class="social-media">

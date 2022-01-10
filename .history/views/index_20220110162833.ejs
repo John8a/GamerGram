@@ -136,9 +136,9 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
                 <% news.forEach(function(article) { %>
                 <div class="card <%- article.theme %>">
                     <img loading="lazy" src="<%- article.image %>" alt="">
-                    <div class="card-description show">
+                    <div class="card-description">
                         <h2><%- article.title %></h2>
-                        <p><%- article.text.substring(0, 100) %>...</p>
+                        <p><%- article.text.substring(0, 100) %></p>
                         <a href="javascript:void()" onclick="fullText(this);">Erfahre Mehr »</a>
                     </div>
                     <div class="card-description full">
@@ -170,14 +170,8 @@ Das bedeutet, kein Dritter, auch nicht wir wissen was Du schreibst</p>
                 </div>
                 <div class="social-media">
                     <a href="" class="information">
-                        <i class="fab fa-tiktok"></i>
+
                         <p>GamerGrid</p>
-                    </a>
-                </div>
-                <div class="social-media">
-                    <a href="" class="information">
-                        <i class="fab fa-youtube"></i>
-                        <p>YouTube</p>
                     </a>
                 </div>
                 <div class="social-media">

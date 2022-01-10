@@ -19,6 +19,6 @@ function outline(input) {
 }
 
 function fullText(card) {
-    card.parentElement.parentElement.children[1].classList.toggle("show"); 
+    card.parentElement.parentElement.children[2].classList.toggle("show"); 
     card.parentElement.parentElement.children[2].classList.toggle("show"); 
 }

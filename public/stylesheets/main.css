@@ -456,6 +456,7 @@ section[name="news"] .cards .card img {
 
 section[name="news"] .cards .card.light .card-description {
   background-color: rgba(255, 255, 255, 0.7);
+  display: none;
 }
 
 section[name="news"] .cards .card.light .card-description h2 {
@@ -468,6 +469,7 @@ section[name="news"] .cards .card.light .card-description p {
 
 section[name="news"] .cards .card.dark .card-description {
   background-color: rgba(0, 0, 0, 0.7);
+  display: none;
 }
 
 section[name="news"] .cards .card.dark .card-description h2 {
